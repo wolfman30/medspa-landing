@@ -1,7 +1,7 @@
 :root {
-  --color-primary: #5d3fd3;
-  --color-primary-dark: #3e27a6;
-  --color-secondary: #f5f0ff;
+  --color-primary: #4c1d95;
+  --color-primary-dark: #312e81;
+  --color-secondary: #eef2ff;
   --color-text: #1f2933;
   --color-muted: #52606d;
   --color-background: #ffffff;
@@ -32,7 +32,7 @@ a:focus {
 }
 
 .hero {
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  background: linear-gradient(140deg, #1e1b4b, #3730a3 55%, #6366f1);
   color: #fff;
   padding: 4.5rem 1.5rem 5.5rem;
 }
@@ -145,7 +145,7 @@ a:focus {
 
 .card h3 {
   margin-top: 0;
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
 }
 
 .grid {
@@ -183,7 +183,7 @@ a:focus {
 }
 
 .footer {
-  background: #151a24;
+  background: #1e1b4b;
   color: #d9dce3;
   padding: 2.5rem 1.5rem;
 }
@@ -199,7 +199,7 @@ a:focus {
 }
 
 .footer a {
-  color: #d9dce3;
+  color: #eef2ff;
 }
 
 .sr-only {
