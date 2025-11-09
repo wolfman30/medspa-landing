@@ -120,33 +120,117 @@
         </div>
       </section>
 
-      <section class="section" id="contact">
+            <section class="section" id="contact">
         <div class="section__content contact">
           <h2>Let&apos;s talk about your clinic</h2>
-          <p>
-            Medspa Booking & SMS Concierge is built by
-            <strong>AI Wolf Solutions</strong> (sole proprietor: Andrew John Wolf).
-            We help medspa owners and operators rescue missed opportunities with
-            AI-guided messaging and seamless payment collection.
-          </p>
-          <ul class="contact__details">
-            <li>
-              <span>Email</span>
-              <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a>
-            </li>
-            <li>
-              <span>Phone</span>
-              <a href="tel:+18662894911">+1 (866) 289-4911</a>
-            </li>
-            <li>
-              <span>Business hours</span>
-              Monday–Friday, 9:00am–5:00pm Eastern
-            </li>
-          </ul>
-          <p class="small-print">
-            Message and data rates may apply. Reply STOP to opt out of SMS, or
-            HELP for assistance.
-          </p>
+          <div class="contact__flex">
+            <div class="contact__info card">
+              <p>
+                Medspa Booking & SMS Concierge is built by
+                <strong>AI Wolf Solutions</strong> (sole proprietor: Andrew John Wolf).
+                We help medspa owners and operators rescue missed opportunities with
+                AI-guided messaging and seamless payment collection.
+              </p>
+              <ul class="contact__details">
+                <li>
+                  <span>Email</span>
+                  <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a>
+                </li>
+                <li>
+                  <span>Phone</span>
+                  <a href="tel:+18662894911">+1 (866) 289-4911</a>
+                </li>
+                <li>
+                  <span>Business hours</span>
+                  Monday–Friday, 9:00am–5:00pm Eastern
+                </li>
+              </ul>
+              <p class="contact__consent-note">
+                Leads can text our concierge number directly from this page or
+                submit the form to opt in. Every submission is logged with the consent
+                language shown, so only opted-in contacts receive SMS follow-ups.
+              </p>
+              <p class="small-print">
+                Message and data rates may apply. Reply STOP to opt out of SMS, or
+                HELP for assistance.
+              </p>
+            </div>
+            <form
+              id="leadForm"
+              class="contact__form card"
+              data-endpoint="https://api.aiwolfsolutions.com/demo-leads"
+              novalidate
+            >
+              <div class="form-field">
+                <label for="leadName">Full name</label>
+                <input
+                  id="leadName"
+                  name="name"
+                  type="text"
+                  autocomplete="name"
+                  required
+                />
+              </div>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="leadPhone">Mobile number</label>
+                  <input
+                    id="leadPhone"
+                    name="phone"
+                    type="tel"
+                    inputmode="tel"
+                    pattern="\+?[0-9\-\s]{7,}"
+                    placeholder="+1 415 555 1234"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="leadEmail">Email</label>
+                  <input
+                    id="leadEmail"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="form-field">
+                <label for="leadService">Interested service</label>
+                <select id="leadService" name="service" required>
+                  <option value="" disabled selected>Select one</option>
+                  <option value="botox">Botox / Neuromodulators</option>
+                  <option value="fillers">Dermal fillers</option>
+                  <option value="skin">Skin resurfacing</option>
+                  <option value="consult">General consultation</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="leadNotes">Notes (optional)</label>
+                <textarea
+                  id="leadNotes"
+                  name="notes"
+                  rows="3"
+                  placeholder="Preferred day/time, questions, etc."
+                ></textarea>
+              </div>
+              <div class="form-checkbox">
+                <input type="checkbox" id="smsConsent" name="sms_consent" required />
+                <label for="smsConsent">
+                  I agree to receive SMS updates from AI Wolf Solutions regarding booking
+                  and reminders. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.
+                </label>
+              </div>
+              <input type="hidden" name="source" value="medspa-landing" />
+              <button type="submit" class="btn btn--full">Request a concierge follow-up</button>
+              <p class="small-print">
+                By submitting you consent to being contacted at the phone number provided,
+                including by automated SMS, for appointment coordination.
+              </p>
+            </form>
+          </div>
+          <div id="leadFormStatus" class="form-status" role="status" aria-live="polite"></div>
         </div>
       </section>
     </main>
@@ -167,5 +251,14 @@
     </footer>
 
     <script src="script.js"></script>
+    <a
+      href="sms:+18662894911?body=Hi%20Medspa%20team%2C%20I%27d%20like%20to%20book%20an%20appointment."
+      class="sms-widget"
+      aria-label="Text our concierge number to start booking"
+    >
+      <span>Prefer to text?</span>
+      <strong>Tap to message the concierge</strong>
+    </a>
   </body>
 </html>
+

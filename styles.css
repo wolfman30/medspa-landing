@@ -162,6 +162,84 @@ a:focus {
   align-items: start;
 }
 
+.contact__flex {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact__info {
+  background: var(--color-secondary);
+}
+
+.contact__consent-note {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin-top: 1.25rem;
+}
+
+.contact__form {
+  display: grid;
+  gap: 1rem;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  border-radius: 18px;
+  padding: 2rem;
+}
+
+.form-row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.form-field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.form-field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  border: 1px solid rgba(76, 29, 149, 0.15);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+  font-family: var(--font-sans);
+  width: 100%;
+}
+
+.form-field textarea {
+  resize: vertical;
+}
+
+.form-checkbox {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.95rem;
+}
+
+.form-checkbox input {
+  margin-top: 0.3rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  min-height: 1.25rem;
+}
 .contact__details {
   list-style: none;
   margin: 0;
@@ -278,6 +356,38 @@ a:focus {
   border: 0;
 }
 
+.sms-widget {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 16px;
+  padding: 0.85rem 1.25rem;
+  box-shadow: 0 18px 40px rgba(12, 6, 40, 0.35);
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-weight: 600;
+  z-index: 10;
+}
+
+.sms-widget span {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.85;
+}
+
+.sms-widget strong {
+  font-size: 1rem;
+}
+
+.sms-widget:hover,
+.sms-widget:focus {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
 @media (max-width: 768px) {
   .nav__toggle {
     display: inline-flex;
@@ -302,6 +412,17 @@ a:focus {
 
   .nav__links a {
     font-size: 1rem;
+  }
+
+  .contact__form {
+    padding: 1.5rem;
+  }
+
+  .sms-widget {
+    right: 0.75rem;
+    left: 0.75rem;
+    bottom: 0.75rem;
+    text-align: center;
   }
 }
 
