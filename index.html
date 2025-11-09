@@ -158,7 +158,7 @@
             <form
               id="leadForm"
               class="contact__form card"
-              data-endpoint="https://api.aiwolfsolutions.com/demo-leads"
+              data-endpoint="https://api.aiwolfsolutions.com/leads/web"
               novalidate
             >
               <div class="form-field">
@@ -222,6 +222,7 @@
                   and reminders. Msg &amp; data rates may apply. Reply STOP to opt out or HELP for help.
                 </label>
               </div>
+              <input type="hidden" name="clinic_id" value="demo-clinic" />
               <input type="hidden" name="source" value="medspa-landing" />
               <button type="submit" class="btn btn--full">Request a concierge follow-up</button>
               <p class="small-print">

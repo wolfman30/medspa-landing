@@ -35,7 +35,7 @@
       const formData = new FormData(leadForm);
       const payload = Object.fromEntries(formData.entries());
       payload.sms_consent = leadForm.querySelector("#smsConsent")?.checked || false;
-      payload.channel = "web_form";
+      payload.channel = "form";
       payload.timestamp = new Date().toISOString();
 
       let delivered = false;
