@@ -32,16 +32,32 @@ a:focus {
 }
 
 .hero {
-  background: linear-gradient(140deg, #1e1b4b, #3730a3 55%, #6366f1);
-  background-size: 200% 200%;
-  animation: heroGradient 18s ease infinite;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(130deg, #1e1b4b, #312e81 40%, #4f46e5 75%, #8b5cf6);
+  background-size: 220% 220%;
+  animation: heroGradient 16s ease alternate infinite;
   color: #fff;
   padding: 4.5rem 1.5rem 5.5rem;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  background-size: 400% 100%;
+  animation: heroSweep 12s linear infinite;
+  pointer-events: none;
 }
 
 .hero__content {
   margin: 0 auto;
   max-width: var(--max-width);
+  position: relative;
+  z-index: 1;
 }
 
 .nav {
@@ -435,5 +451,20 @@ a:focus {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes heroSweep {
+  0% {
+    background-position: 0% 50%;
+    opacity: 0.4;
+  }
+  50% {
+    background-position: 100% 50%;
+    opacity: 0.7;
+  }
+  100% {
+    background-position: 0% 50%;
+    opacity: 0.4;
   }
 }
