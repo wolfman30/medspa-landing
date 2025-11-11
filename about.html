@@ -3,125 +3,47 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About Andrew Wolf | AI Wolf Solutions</title>
-    <meta
-      name="description"
-      content="Founder profile, credentials, and contact details for Andrew Wolf of AI Wolf Solutions."
-    />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>About AI Wolf Solutions</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="hero hero--compact">
-      <div class="hero__content">
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__brand" href="index.html">AI Wolf Solutions</a>
-          <ul class="nav__links nav__links--static">
-            <li><a href="index.html#about">Platform</a></li>
-            <li><a href="index.html#consent">Compliance</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
-            <li><a href="about.html" aria-current="page">About</a></li>
-          </ul>
-        </nav>
-        <div class="hero__copy">
-          <p class="eyebrow">Founder verification</p>
-          <h1>Hi Twilio Fraud Ops — I’m Andrew Wolf.</h1>
-          <p>
-            I build AI Wolf Solutions, the studio behind our medspa booking assistant.
-            This page confirms my role, how we use Twilio, and how to reach me directly.
-          </p>
-        </div>
+    <main class="section section--alt">
+      <div class="section__content" style="max-width: 720px; margin: 0 auto;">
+        <a href="index.html" class="btn" style="margin-bottom: 1rem;">← Back to site</a>
+        <h1>About AI Wolf Solutions</h1>
+        <p>
+          <strong>AI Wolf Solutions</strong> is a sole proprietorship founded and operated by
+          <strong>Andrew J. Wolf</strong>.
+        </p>
+        <p>
+          <strong>Business address:</strong><br />
+          4487 Grand Lake Drive<br />
+          Brunswick, OH 44212<br />
+          USA
+        </p>
+        <p>
+          <strong>Contact:</strong>
+          <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a> &bull;
+          +1 (937) 896-2713
+        </p>
+        <p>
+          AI Wolf Solutions builds a transactional, toll-free verified SMS booking assistant for medical
+          spas. All messaging is first-party, consent-based, and excludes PHI. The product is operated and
+          supported directly by Andrew, leveraging Twilio’s verified messaging stack for compliant patient
+          engagement.
+        </p>
       </div>
-    </header>
-
-    <main>
-      <section class="section">
-        <div class="section__content">
-          <h2>Who I am</h2>
-          <div class="grid grid--two">
-            <article class="card">
-              <h3>Andrew Wolf</h3>
-              <p>
-                Founder &amp; principal engineer at <strong>AI Wolf Solutions LLC</strong>.
-                I previously led GTM engineering teams for SMS-first SaaS products and now focus on
-                automating patient engagement workflows for medspa operators.
-              </p>
-              <ul class="list">
-                <li>8+ years shipping HIPAA-aware messaging platforms</li>
-                <li>Based in Austin, TX – operating as a U.S. single-member LLC</li>
-                <li>Directly responsible for product, security, and vendor relations</li>
-              </ul>
-            </article>
-            <article class="card">
-              <h3>Current focus</h3>
-              <p>
-                AI Wolf Solutions runs a Twilio-powered SMS concierge that captures medspa leads after hours,
-                qualifies intent, and routes booked consultations back to staff. I manage our verified toll-free
-                assets, TCR registrations, and webhook security controls.
-              </p>
-              <p>
-                The booking assistant lives at <a href="https://aiwolfsolutions.com" target="_blank" rel="noopener">aiwolfsolutions.com</a>
-                and https://medspa.aiwolfsolutions.com, with privacy and consent policies published publicly.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section section--alt">
-        <div class="section__content">
-          <h2>Verification &amp; contact</h2>
-          <div class="grid grid--two">
-            <div>
-              <h3>Public links</h3>
-              <ul class="list">
-                <li>
-                  LinkedIn: <a href="https://www.linkedin.com/in/andrew-wolf-ai/" target="_blank" rel="noopener">linkedin.com/in/andrew-wolf-ai</a>
-                </li>
-                <li>
-                  Company domain: <a href="https://aiwolfsolutions.com" target="_blank" rel="noopener">aiwolfsolutions.com</a>
-                </li>
-                <li>
-                  GitHub portfolio: <a href="https://github.com/wolfman30" target="_blank" rel="noopener">github.com/wolfman30</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h3>How to reach me</h3>
-              <p>
-                Primary email: <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a><br />
-                Phone / SMS (Twilio toll-free): +1 (888) 970-3214
-              </p>
-              <p>
-                Please keep <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a> on the CC list for
-                compliance reviews. I will reply from that domain confirming my association if needed.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section__content">
-          <h2>Twilio usage summary</h2>
-          <div class="card">
-            <ul class="list list--check">
-              <li>Messaging use case: conversational lead capture &amp; booking follow-ups for opt-in medspa patients.</li>
-              <li>Opt-in records stored via our consent widget and IVR flow; STOP/HELP keywords honored automatically.</li>
-              <li>All SMS traffic originates from a verified toll-free number with TCR vetting complete.</li>
-              <li>Only transactional notifications (no affiliate, SHAFT, or high-risk content).</li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </main>
-
     <footer class="footer">
-      <p>&copy; <span id="year"></span> AI Wolf Solutions LLC. All rights reserved.</p>
+      <p>
+        &copy;
+        <script>
+          document.write(new Date().getFullYear());
+        </script>
+        AI Wolf Solutions. All rights reserved.
+      </p>
     </footer>
-
-    <script>
-      document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
   </body>
 </html>
 
