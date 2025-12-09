@@ -34,9 +34,9 @@ a:focus {
 .hero {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(130deg, #1e1b4b, #312e81 40%, #4f46e5 75%, #8b5cf6);
-  background-size: 220% 220%;
-  animation: heroGradient 16s ease alternate infinite;
+  background: linear-gradient(130deg, #1e1b4b, #312e81 35%, #4f46e5 60%, #7c3aed 80%, #8b5cf6);
+  background-size: 300% 300%;
+  animation: heroGradient 8s ease infinite;
   color: #fff;
   padding: 4.5rem 1.5rem 5.5rem;
 }
@@ -45,11 +45,16 @@ a:focus {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
-  mix-blend-mode: screen;
-  opacity: 0.6;
-  background-size: 400% 100%;
-  animation: heroSweep 12s linear infinite;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.15) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: heroSweep 4s ease-in-out infinite;
   pointer-events: none;
 }
 
@@ -136,6 +141,58 @@ a:focus {
 
 .section--alt {
   background: var(--color-secondary);
+}
+
+/* Animated gradient band - apply to sections for the purple gradient effect */
+.section--gradient {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(130deg, #1e1b4b, #312e81 40%, #4f46e5 75%, #8b5cf6);
+  background-size: 220% 220%;
+  animation: heroGradient 16s ease alternate infinite;
+  color: #fff;
+}
+
+.section--gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.02));
+  mix-blend-mode: screen;
+  opacity: 0.6;
+  background-size: 400% 100%;
+  animation: heroSweep 12s linear infinite;
+  pointer-events: none;
+}
+
+.section--gradient .section__content {
+  position: relative;
+  z-index: 1;
+}
+
+.section--gradient h2,
+.section--gradient h3,
+.section--gradient p,
+.section--gradient li {
+  color: #fff;
+}
+
+.section--gradient a {
+  color: #c4b5fd;
+}
+
+.section--gradient a:hover {
+  color: #fff;
+}
+
+.section--gradient .card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.section--gradient .card h3 {
+  color: #fff;
 }
 
 .section__content {
@@ -444,27 +501,21 @@ a:focus {
 
 @keyframes heroGradient {
   0% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
   50% {
-    background-position: 100% 50%;
+    background-position: 100% 100%;
   }
   100% {
-    background-position: 0% 50%;
+    background-position: 0% 0%;
   }
 }
 
 @keyframes heroSweep {
   0% {
-    background-position: 0% 50%;
-    opacity: 0.4;
-  }
-  50% {
-    background-position: 100% 50%;
-    opacity: 0.7;
+    background-position: -100% 0;
   }
   100% {
-    background-position: 0% 50%;
-    opacity: 0.4;
+    background-position: 200% 0;
   }
 }
