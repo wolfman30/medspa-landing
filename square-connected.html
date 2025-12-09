@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Square Connected - AI Wolf Solutions</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .success-container {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            animation: scaleIn 0.5s ease-out;
+        }
+        
+        .success-icon svg {
+            width: 60px;
+            height: 60px;
+            color: white;
+        }
+        
+        .success-title {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message {
+            font-size: 1.25rem;
+            color: #6b7280;
+            max-width: 500px;
+            margin-bottom: 2rem;
+        }
+        
+        .success-details {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .success-details p {
+            margin: 0.5rem 0;
+            color: #4b5563;
+        }
+        
+        .success-details strong {
+            color: #1f2937;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        @keyframes scaleIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .checkmark {
+            animation: drawCheck 0.5s ease-out 0.3s forwards;
+            stroke-dasharray: 50;
+            stroke-dashoffset: 50;
+        }
+        
+        @keyframes drawCheck {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">AI Wolf Solutions</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="demo.html">Demo</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="success-container">
+        <div class="success-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path class="checkmark" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+        
+        <h1 class="success-title">Square Connected!</h1>
+        
+        <p class="success-message">
+            Your Square account has been successfully connected. You can now accept payments through our booking platform.
+        </p>
+        
+        <div class="success-details">
+            <p><strong>What's next?</strong></p>
+            <p>✓ Payments will be deposited directly to your Square account</p>
+            <p>✓ Refunds can be processed through the dashboard</p>
+            <p>✓ Transaction history syncs automatically</p>
+        </div>
+        
+        <a href="index.html" class="btn-primary">Return to Home</a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 AI Wolf Solutions LLC. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Parse URL hash for any connection details
+        const hash = window.location.hash.substring(1);
+        if (hash) {
+            const params = new URLSearchParams(hash.replace('#', ''));
+            // Could display merchant info here if passed in URL
+        }
+    </script>
+</body>
+</html>
