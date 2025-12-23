@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Medspa Concierge – Ops Dashboard</title>
+    <meta
+      name="description"
+      content="Operational dashboard for missed-call conversions and AI latency."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero hero--compact" id="top">
+      <div class="hero__content">
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__brand" href="index.html">Medspa Concierge</a>
+          <button class="nav__toggle" id="navToggle" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            &#9776;
+          </button>
+          <ul class="nav__links" id="navLinks">
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+          </ul>
+        </nav>
+
+        <div class="hero__copy hero__copy--wide">
+          <h1>Ops Dashboard</h1>
+          <p>
+            Track missed-call conversions and LLM latency. This page is intended for
+            internal use and requires an admin JWT.
+          </p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section section--alt">
+        <div class="section__content">
+          <div class="dashboard">
+            <form id="dashboardForm" class="card dashboard__form" novalidate>
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="dashboardApiBase">API base URL</label>
+                  <input
+                    id="dashboardApiBase"
+                    name="apiBase"
+                    type="url"
+                    inputmode="url"
+                    placeholder="https://api-dev.aiwolfsolutions.com"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="dashboardOrgId">Org ID</label>
+                  <input
+                    id="dashboardOrgId"
+                    name="orgId"
+                    type="text"
+                    placeholder="default-org"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-field">
+                  <label for="dashboardJwt">Admin JWT</label>
+                  <input
+                    id="dashboardJwt"
+                    name="jwt"
+                    type="password"
+                    autocomplete="off"
+                    placeholder="Paste the Bearer token value"
+                    required
+                  />
+                </div>
+                <div class="form-field">
+                  <label for="dashboardDays">Window (days)</label>
+                  <input
+                    id="dashboardDays"
+                    name="days"
+                    type="number"
+                    min="1"
+                    max="90"
+                    value="7"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="form-row dashboard__actions">
+                <button type="submit" class="btn">Load metrics</button>
+                <button type="button" id="dashboardClearToken" class="btn btn--secondary">
+                  Clear token
+                </button>
+              </div>
+
+              <p class="small-print">
+                The JWT is stored only in this browser session. If you need CORS,
+                set <code>CORS_ALLOWED_ORIGINS</code> on the API (comma-separated).
+              </p>
+              <div id="dashboardStatus" class="form-status" role="status" aria-live="polite"></div>
+            </form>
+
+            <div class="grid dashboard__kpis">
+              <article class="card kpi">
+                <h3>Missed-call leads</h3>
+                <p class="kpi__value" id="kpiMissedCalls">—</p>
+                <p class="small-print">Unique leads created from voice missed calls.</p>
+              </article>
+              <article class="card kpi">
+                <h3>Paid deposits</h3>
+                <p class="kpi__value" id="kpiPaidDeposits">—</p>
+                <p class="small-print">Paid by missed-call leads in the window.</p>
+              </article>
+              <article class="card kpi">
+                <h3>Conversion</h3>
+                <p class="kpi__value" id="kpiConversion">—</p>
+                <p class="small-print">Paid deposits / missed-call leads.</p>
+              </article>
+              <article class="card kpi">
+                <h3>LLM latency (p95)</h3>
+                <p class="kpi__value" id="kpiP95">—</p>
+                <p class="small-print">Based on the app’s Prometheus histogram.</p>
+              </article>
+            </div>
+
+            <div class="grid dashboard__charts">
+              <article class="card">
+                <div class="dashboard__chart-header">
+                  <h3>Missed-call funnel (by day)</h3>
+                  <p class="small-print" id="dailyChartMeta">—</p>
+                </div>
+                <svg
+                  id="dailyChart"
+                  class="chart"
+                  viewBox="0 0 800 260"
+                  role="img"
+                  aria-label="Daily missed-call leads and paid deposits"
+                ></svg>
+                <div class="dashboard__legend">
+                  <span class="legend__item"
+                    ><span class="legend__swatch legend__swatch--purple"></span>Missed-call
+                    leads</span
+                  >
+                  <span class="legend__item"
+                    ><span class="legend__swatch legend__swatch--green"></span>Paid
+                    deposits</span
+                  >
+                </div>
+              </article>
+              <article class="card">
+                <div class="dashboard__chart-header">
+                  <h3>LLM latency distribution</h3>
+                  <p class="small-print" id="latencyChartMeta">—</p>
+                </div>
+                <svg
+                  id="latencyChart"
+                  class="chart"
+                  viewBox="0 0 800 260"
+                  role="img"
+                  aria-label="Histogram of LLM latency"
+                ></svg>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <p>&copy; <span id="year"></span> AI Wolf Solutions. Internal dashboard.</p>
+        <div class="footer__links">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">•</span>
+          <a href="#top">Back to top</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="dashboard.js"></script>
+  </body>
+</html>
+

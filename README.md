@@ -13,3 +13,15 @@ Open http://localhost:8000 in your browser to preview changes before committing.
 ## Deployment
 
 GitHub Pages serves the `main` branch. Push updates to publish them automatically at https://wolfman30.github.io/medspa-landing/.
+
+## Ops dashboard (internal)
+
+This site includes an internal operational dashboard at `dashboard.html` that visualizes:
+
+- Missed-call lead volume + paid-deposit conversion (by day)
+- LLM latency distribution + p90/p95
+
+**Requirements**
+
+- A valid admin JWT for the API (`Authorization: Bearer ...`)
+- API CORS allowlist that includes the dashboard origin (set `CORS_ALLOWED_ORIGINS` on the API, comma-separated)
