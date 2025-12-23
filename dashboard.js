@@ -26,6 +26,21 @@
     jwt: "opsDashboard.jwt",
   };
 
+  // Check for Cognito auth integration
+  function getCognitoAuth() {
+    if (typeof window.MedspaAuth !== "undefined" && window.MedspaAuth.isLoggedIn()) {
+      const tokens = window.MedspaAuth.getTokens();
+      const config = window.MedspaAuth.getConfig();
+      return {
+        jwt: tokens.idToken || tokens.accessToken,
+        apiBase: config.apiBaseUrl,
+        orgId: config.orgId,
+        email: tokens.email,
+      };
+    }
+    return null;
+  }
+
   function getQueryParams() {
     try {
       const params = new URLSearchParams(window.location.search);
@@ -62,15 +77,29 @@
 
   function loadSettings() {
     const qp = getQueryParams();
+    const cognitoAuth = getCognitoAuth();
+
     try {
-      apiBaseEl.value =
-        qp.apiBase ||
-        localStorage.getItem(storageKeys.apiBase) ||
-        "https://api-dev.aiwolfsolutions.com";
-      orgIdEl.value =
-        qp.orgId || localStorage.getItem(storageKeys.orgId) || "default-org";
+      // Prefer Cognito auth values, then query params, then localStorage
+      if (cognitoAuth) {
+        apiBaseEl.value = cognitoAuth.apiBase || localStorage.getItem(storageKeys.apiBase) || "https://api.aiwolfsolutions.com";
+        orgIdEl.value = cognitoAuth.orgId || localStorage.getItem(storageKeys.orgId) || "default-org";
+        jwtEl.value = cognitoAuth.jwt || "";
+        // Mark JWT field as auto-filled from Cognito
+        if (cognitoAuth.jwt && jwtEl) {
+          jwtEl.placeholder = `Signed in as ${cognitoAuth.email || "user"}`;
+          jwtEl.disabled = true;
+        }
+      } else {
+        apiBaseEl.value =
+          qp.apiBase ||
+          localStorage.getItem(storageKeys.apiBase) ||
+          "https://api-dev.aiwolfsolutions.com";
+        orgIdEl.value =
+          qp.orgId || localStorage.getItem(storageKeys.orgId) || "default-org";
+        jwtEl.value = sessionStorage.getItem(storageKeys.jwt) || "";
+      }
       daysEl.value = qp.days || localStorage.getItem(storageKeys.days) || "7";
-      jwtEl.value = sessionStorage.getItem(storageKeys.jwt) || "";
     } catch {
       apiBaseEl.value = qp.apiBase || "https://api-dev.aiwolfsolutions.com";
       orgIdEl.value = qp.orgId || "default-org";
