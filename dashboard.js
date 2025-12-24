@@ -8,6 +8,7 @@
   const daysEl = document.getElementById("dashboardDays");
   const statusEl = document.getElementById("dashboardStatus");
   const clearTokenBtn = document.getElementById("dashboardClearToken");
+  const demoModeBtn = document.getElementById("dashboardDemoMode");
 
   const kpiMissedCallsEl = document.getElementById("kpiMissedCalls");
   const kpiPaidDepositsEl = document.getElementById("kpiPaidDeposits");
@@ -524,6 +525,87 @@
       if (jwtEl) jwtEl.value = "";
       setStatus("Token cleared.", false);
     });
+  }
+
+  // Generate realistic demo data for visualization testing
+  function generateDemoData() {
+    const days = parseInt(daysEl.value, 10) || 7;
+    const daily = [];
+    const today = new Date();
+
+    let totalMissed = 0;
+    let totalPaid = 0;
+
+    for (let i = days - 1; i >= 0; i--) {
+      const date = new Date(today);
+      date.setDate(date.getDate() - i);
+      const dayStr = date.toISOString().split("T")[0];
+
+      // Generate realistic missed call leads (8-25 per day with some variance)
+      const missed = Math.floor(8 + Math.random() * 17);
+      // Conversion rate varies between 15-35%
+      const convRate = 0.15 + Math.random() * 0.20;
+      const paid = Math.floor(missed * convRate);
+
+      totalMissed += missed;
+      totalPaid += paid;
+
+      daily.push({
+        day: dayStr,
+        missed_call_leads: missed,
+        paid_leads: paid,
+      });
+    }
+
+    const conversionPct = totalMissed > 0 ? (totalPaid / totalMissed) * 100 : 0;
+
+    // Generate latency buckets (typical LLM response times)
+    const buckets = [
+      { le_seconds: 0.5, count: Math.floor(50 + Math.random() * 100) },
+      { le_seconds: 1.0, count: Math.floor(150 + Math.random() * 200) },
+      { le_seconds: 1.5, count: Math.floor(300 + Math.random() * 250) },
+      { le_seconds: 2.0, count: Math.floor(400 + Math.random() * 300) },
+      { le_seconds: 2.5, count: Math.floor(350 + Math.random() * 200) },
+      { le_seconds: 3.0, count: Math.floor(200 + Math.random() * 150) },
+      { le_seconds: 3.5, count: Math.floor(100 + Math.random() * 100) },
+      { le_seconds: 4.0, count: Math.floor(50 + Math.random() * 60) },
+      { le_seconds: 5.0, count: Math.floor(20 + Math.random() * 30) },
+      { le_seconds: 7.5, count: Math.floor(5 + Math.random() * 15) },
+      { le_seconds: 10.0, count: Math.floor(2 + Math.random() * 8) },
+    ];
+
+    const totalSamples = buckets.reduce((sum, b) => sum + b.count, 0);
+
+    const startDate = new Date(today);
+    startDate.setDate(startDate.getDate() - days + 1);
+
+    return {
+      missed_call_leads: totalMissed,
+      missed_call_paid_leads: totalPaid,
+      missed_call_conversion_pct: conversionPct,
+      period_start: startDate.toISOString().split("T")[0],
+      period_end: today.toISOString().split("T")[0],
+      daily: daily,
+      llm_latency: {
+        p50_ms: 1800 + Math.floor(Math.random() * 400),
+        p90_ms: 2800 + Math.floor(Math.random() * 500),
+        p95_ms: 3200 + Math.floor(Math.random() * 600),
+        p99_ms: 4500 + Math.floor(Math.random() * 1000),
+        total: totalSamples,
+        buckets: buckets,
+      },
+    };
+  }
+
+  function loadDemoMode() {
+    setStatus("Loading demo data...", false);
+    const demoData = generateDemoData();
+    renderDashboard(demoData);
+    setStatus("Demo mode active - showing sample data.", false);
+  }
+
+  if (demoModeBtn) {
+    demoModeBtn.addEventListener("click", loadDemoMode);
   }
 
   form.addEventListener("submit", (event) => {
