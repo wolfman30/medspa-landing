@@ -31,6 +31,7 @@
           </ul>
         </nav>
         <div class="hero__copy">
+          <p class="hero__kicker">After-hours SMS concierge</p>
           <h1>Stop losing medspa leads when staff is offline.</h1>
           <p>
             Medspa Booking & SMS Concierge gives owners and operators an AI
@@ -38,7 +39,11 @@
             captures preferred booking details and deposits so staff can
             finalize appointments without adding headcount.
           </p>
-          <a class="btn" href="#contact">Book a strategy call</a>
+          <div class="hero__actions">
+            <a class="btn" href="#contact">Book a strategy call</a>
+            <a class="btn btn--secondary" href="demo.html">See the demo</a>
+          </div>
+          <p class="hero__micro">Setup in days. No EMR/EHR sync required in phase 1.</p>
         </div>
       </div>
     </header>
@@ -270,9 +275,20 @@
       class="sms-widget"
       aria-label="Text our concierge number to start booking"
     >
-      <span>Prefer to text?</span>
-      <strong>Tap to message the concierge</strong>
+      <span class="sms-widget__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M8 10h8M8 14h5m9-3a7 7 0 0 1-7 7H8l-4 3V7a5 5 0 0 1 5-5h6a7 7 0 0 1 7 7v2Z"
+          />
+        </svg>
+      </span>
+      <span class="sms-widget__text">
+        <span class="sms-widget__kicker">Text the concierge</span>
+        <strong>+1 (937) 896-2713</strong>
+      </span>
+      <span class="sms-widget__arrow" aria-hidden="true">→</span>
     </a>
   </body>
 </html>
-
