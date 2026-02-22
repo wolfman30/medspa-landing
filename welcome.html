@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Welcome Aboard | MedSpa Concierge</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .welcome-wrap { display: flex; justify-content: center; padding: 0 1.5rem; margin-top: -2rem; position: relative; z-index: 2; }
+      .welcome-card { background: var(--color-surface-solid); border-radius: var(--radius-xl); padding: 3rem 2.5rem; border: 1px solid var(--color-border); box-shadow: var(--shadow-card); max-width: 580px; width: 100%; text-align: center; }
+      .welcome-card h1 { color: var(--color-primary); margin: 0 0 0.5rem; font-size: 2rem; }
+      .welcome-card .emoji { font-size: 3rem; margin-bottom: 1rem; display: block; }
+      .welcome-card p { color: var(--color-muted); line-height: 1.7; }
+      .next-steps { background: var(--color-secondary); border-radius: var(--radius-lg); padding: 1.5rem; text-align: left; margin: 1.5rem 0; }
+      .next-steps h3 { margin: 0 0 0.75rem; color: var(--color-primary); }
+      .next-steps ol { margin: 0; padding-left: 1.25rem; }
+      .next-steps li { padding: 0.35rem 0; color: var(--color-text); }
+      .contact-info { margin-top: 1.5rem; }
+      .contact-info a { font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <header class="hero hero--compact" id="top">
+      <div class="hero__content">
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__brand" href="index.html">Medspa Concierge</a>
+          <ul class="nav__links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+          </ul>
+        </nav>
+        <div class="hero__copy hero__copy--wide" style="text-align: center;">
+          <h1 style="font-size: clamp(1.8rem, 3.5vw, 2.8rem);">You're in! 🎉</h1>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="welcome-wrap">
+        <div class="welcome-card">
+          <span class="emoji">🐺</span>
+          <h1>Welcome aboard!</h1>
+          <p>Your MedSpa Concierge subscription is confirmed. We're excited to help you recover lost leads and grow your practice.</p>
+
+          <div class="next-steps">
+            <h3>What happens next</h3>
+            <ol>
+              <li><strong>Within 24 hours</strong> — We'll reach out to begin your personalized onboarding</li>
+              <li><strong>Days 1–3</strong> — We configure your AI concierge with your services, providers, and preferences</li>
+              <li><strong>Days 3–5</strong> — Phone number registration and brand verification</li>
+              <li><strong>Day 5+</strong> — You're live! The AI starts responding to missed calls instantly</li>
+            </ol>
+          </div>
+
+          <div class="contact-info">
+            <p>Questions in the meantime? Reach out anytime:</p>
+            <p>
+              <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a><br />
+              <a href="tel:+19378962713">(937) 896-2713</a>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section class="section" style="padding-top: 3rem;">
+        <div class="section__content" style="text-align: center;">
+          <p class="small-print">A confirmation email with your subscription details has been sent to your email address.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <p>&copy; <span id="year"></span> AI Wolf Solutions. All rights reserved.</p>
+        <div class="footer__links">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">·</span>
+          <a href="privacy.html">Privacy Policy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

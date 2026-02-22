@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing | MedSpa Concierge by AI Wolf Solutions</title>
+    <meta
+      name="description"
+      content="MedSpa Concierge pricing — $497/month for 24/7 AI receptionist, smart booking, deposit collection, and more. First 10 founding clients get $0 setup fee."
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .pricing-hero { text-align: center; }
+      .pricing-hero h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 1rem; }
+      .pricing-hero > p { font-size: 1.15rem; color: rgba(255,255,255,0.88); max-width: 600px; margin: 0 auto 2rem; }
+
+      .pricing-card-wrap { display: flex; justify-content: center; margin-top: -3rem; position: relative; z-index: 2; padding: 0 1.5rem; }
+      .pricing-card { background: var(--color-surface-solid); border-radius: var(--radius-xl); padding: 2.5rem 2rem; border: 1px solid var(--color-border); box-shadow: var(--shadow-card); max-width: 520px; width: 100%; text-align: center; }
+      .pricing-card h2 { margin: 0 0 0.25rem; color: var(--color-primary); font-size: 1.5rem; }
+      .pricing-card .price { font-size: 3.2rem; font-weight: 800; color: var(--color-text); margin: 0.75rem 0 0.25rem; letter-spacing: -0.03em; }
+      .pricing-card .price span { font-size: 1.1rem; font-weight: 500; color: var(--color-muted); }
+      .pricing-card .subtitle { color: var(--color-muted); margin: 0 0 1.5rem; font-size: 0.95rem; }
+
+      .founding-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #f59e0b, #d97706); color: #fff; padding: 0.5rem 1rem; border-radius: var(--radius-pill); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; margin-bottom: 1.25rem; animation: pulse-badge 2s ease-in-out infinite; }
+      .founding-badge .line-through { text-decoration: line-through; opacity: 0.85; }
+      @keyframes pulse-badge { 0%,100% { box-shadow: 0 0 0 0 rgba(245,158,11,0.4); } 50% { box-shadow: 0 0 0 8px rgba(245,158,11,0); } }
+
+      .features-list { list-style: none; padding: 0; margin: 0 0 2rem; text-align: left; }
+      .features-list li { padding: 0.55rem 0; border-bottom: 1px solid rgba(15,23,42,0.06); display: flex; align-items: flex-start; gap: 0.65rem; font-size: 0.95rem; }
+      .features-list li:last-child { border-bottom: none; }
+      .features-list .check { color: #10b981; font-weight: 700; flex-shrink: 0; font-size: 1.1rem; line-height: 1.4; }
+      .features-list .coming-soon { font-size: 0.75rem; background: var(--color-secondary); color: var(--color-primary); padding: 0.15rem 0.5rem; border-radius: var(--radius-pill); font-weight: 600; margin-left: 0.35rem; white-space: nowrap; }
+
+      .btn--primary { background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark)); color: #fff; font-size: 1.1rem; padding: 1rem 2.5rem; border: none; }
+      .btn--primary:hover { background: linear-gradient(135deg, var(--color-primary-dark), #1e1b4b); color: #fff; box-shadow: 0 12px 32px rgba(76,29,149,0.3); }
+
+      .roi-section { text-align: center; max-width: 700px; margin: 0 auto; }
+      .roi-section h2 { color: var(--color-primary); }
+      .roi-highlight { background: var(--color-secondary); border-radius: var(--radius-lg); padding: 2rem; border-left: 4px solid var(--color-primary); text-align: left; margin: 1.5rem 0; }
+      .roi-highlight p { margin: 0; font-size: 1.05rem; line-height: 1.7; }
+      .roi-highlight strong { color: var(--color-primary-dark); }
+
+      .faq { max-width: 700px; margin: 0 auto; }
+      .faq h2 { text-align: center; color: var(--color-primary); }
+      .faq-item { border-bottom: 1px solid var(--color-border); }
+      .faq-item summary { cursor: pointer; padding: 1.1rem 0; font-weight: 600; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+      .faq-item summary::-webkit-details-marker { display: none; }
+      .faq-item summary::after { content: "+"; font-size: 1.3rem; color: var(--color-primary); transition: transform 0.2s; }
+      .faq-item[open] summary::after { content: "−"; }
+      .faq-item p { margin: 0 0 1.1rem; color: var(--color-muted); line-height: 1.7; }
+
+      .cta-bottom { text-align: center; }
+      .cta-bottom h2 { color: var(--color-primary); }
+      .cta-bottom p { color: var(--color-muted); max-width: 500px; margin: 0 auto 1.5rem; }
+    </style>
+  </head>
+  <body>
+    <header class="hero hero--compact" id="top">
+      <div class="hero__content">
+        <nav class="nav" aria-label="Primary">
+          <a class="nav__brand" href="index.html">Medspa Concierge</a>
+          <button class="nav__toggle" id="navToggle" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            &#9776;
+          </button>
+          <ul class="nav__links" id="navLinks">
+            <li><a href="index.html#about">Platform</a></li>
+            <li><a href="index.html#consent">Compliance</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="demo.html">Demo</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="https://portal-dev.aiwolfsolutions.com" class="nav__link--portal">Sign In</a></li>
+          </ul>
+        </nav>
+        <div class="hero__copy hero__copy--wide pricing-hero">
+          <p class="hero__kicker">Simple, transparent pricing</p>
+          <h1>One plan. Everything included.</h1>
+          <p>No per-message fees. No hidden costs. Cancel anytime.</p>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="pricing-card-wrap">
+        <div class="pricing-card">
+          <div class="founding-badge">
+            <span>🚀</span> Founding Client Offer: <span class="line-through">$1,500</span> $0 setup fee
+          </div>
+          <h2>MedSpa Concierge</h2>
+          <div class="price">$497<span>/month</span></div>
+          <p class="subtitle">Everything you need to stop losing leads</p>
+          <ul class="features-list">
+            <li><span class="check">✓</span> 24/7 AI text-back for missed calls</li>
+            <li><span class="check">✓</span> Smart patient qualification (name, service, schedule, provider preference)</li>
+            <li><span class="check">✓</span> Automated booking via your existing EMR (Moxie, Boulevard, more coming)</li>
+            <li><span class="check">✓</span> Stripe payment collection with $50 deposits</li>
+            <li><span class="check">✓</span> Real-time admin dashboard</li>
+            <li><span class="check">✓</span> Conversation analytics &amp; lead tracking</li>
+            <li><span class="check">✓</span> HIPAA-compliant infrastructure</li>
+            <li><span class="check">✓</span> Dedicated onboarding support</li>
+            <li><span class="check">✓</span> Voice AI callback <span class="coming-soon">Coming Soon</span></li>
+            <li><span class="check">✓</span> Instagram DM &amp; Web Chat <span class="coming-soon">Coming Soon</span></li>
+          </ul>
+          <button id="checkoutBtn" class="btn btn--primary btn--full">Get Started</button>
+          <p class="small-print" style="margin-top: 1rem;">No long-term contracts. Cancel anytime.</p>
+        </div>
+      </div>
+
+      <section class="section" id="roi">
+        <div class="section__content roi-section">
+          <h2>The math speaks for itself</h2>
+          <div class="roi-highlight">
+            <p>
+              The average med spa loses <strong>30% of callers</strong> who don't leave a voicemail.
+              At <strong>$300+ per treatment</strong>, just <strong>2 recovered appointments</strong>
+              pays for the entire month of MedSpa Concierge.
+            </p>
+          </div>
+          <p style="color: var(--color-muted);">
+            Most of our clients see ROI within the first week. The AI responds in seconds —
+            before your leads have time to call a competitor.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--alt" id="faq">
+        <div class="section__content faq">
+          <h2>Frequently asked questions</h2>
+
+          <details class="faq-item">
+            <summary>How long does setup take?</summary>
+            <p>Most clinics are fully live within 3–5 business days. We handle the technical setup, phone number registration, and AI configuration. Your team just needs to provide service details and preferences.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Are there any long-term contracts?</summary>
+            <p>No. MedSpa Concierge is month-to-month. You can cancel anytime — though once you see the recovered revenue, you won't want to.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Which EMR/booking systems do you integrate with?</summary>
+            <p>We currently support Moxie and Boulevard for automated booking. More integrations (Jane, Vagaro, and others) are coming soon. Even without a direct integration, the AI captures all booking details so your staff can confirm in seconds.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Is this HIPAA compliant?</summary>
+            <p>Yes. All patient data is encrypted in transit and at rest. We maintain HIPAA-compliant infrastructure with audit-ready records, opt-in/opt-out tracking, and secure data handling throughout.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What happens when the AI can't handle a conversation?</summary>
+            <p>The AI is designed to gracefully hand off to your team. If a patient asks something outside the AI's scope, it collects their info and notifies your staff immediately so no lead is ever lost.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Do patients know they're texting with AI?</summary>
+            <p>Yes, we maintain full transparency. The initial message identifies itself as an AI assistant for your clinic. This builds trust and meets compliance requirements.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>Can I keep my existing phone number?</summary>
+            <p>Yes. We register your existing business number for text messaging. The entire approval process typically takes 5–7 business days.</p>
+          </details>
+
+          <details class="faq-item">
+            <summary>What's included in the founding client offer?</summary>
+            <p>The first 10 clients get the $1,500 one-time setup fee completely waived. You only pay the $497/month subscription. This includes phone number registration, brand verification, AI configuration, and dedicated onboarding support.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="cta-bottom">
+        <div class="section__content cta-bottom">
+          <h2>Ready to stop losing leads?</h2>
+          <p>Join the med spas already recovering revenue with AI-powered text-back.</p>
+          <button onclick="document.getElementById('checkoutBtn').click()" class="btn btn--primary">Get Started — $497/month</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__content">
+        <p>&copy; <span id="year"></span> AI Wolf Solutions. All rights reserved.</p>
+        <div class="footer__links">
+          <a href="index.html">Home</a>
+          <span aria-hidden="true">·</span>
+          <a href="privacy.html">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="checkout.js"></script>
+  </body>
+</html>
