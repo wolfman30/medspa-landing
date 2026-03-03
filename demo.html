@@ -440,14 +440,20 @@ const STEPS = [
       { type: 'outgoing', text: "First time!", delay: 2000 },
     ]
   },
-  // Step 4: Provider preference + Schedule
+  // Step 4: Schedule preference
   {
-    label: "🎯 AI qualifies — Provider & Schedule",
+    label: "🎯 AI qualifies — Schedule",
     messages: [
-      { type: 'incoming', text: "Welcome! Do you have a preference for your provider? Our providers are Steineck, Tiffany Steineck, Angela Solenthaler, Amy Petrillo. Or no preference is totally fine!", delay: 1200 },
-      { type: 'outgoing', text: "No preference", delay: 2000 },
-      { type: 'incoming', text: "No problem! What days and times generally work best for you?", delay: 1200 },
+      { type: 'incoming', text: "Welcome! What days and times generally work best for you?", delay: 1200 },
       { type: 'outgoing', text: "Thursdays after 4pm", delay: 2000 },
+    ]
+  },
+  // Step 4b: Provider preference
+  {
+    label: "🎯 AI qualifies — Provider Preference",
+    messages: [
+      { type: 'incoming', text: "Do you have a preference for your provider? Our providers are Steineck, Tiffany Steineck, Angela Solenthaler, Amy Petrillo. Or no preference is totally fine!", delay: 1200 },
+      { type: 'outgoing', text: "No preference", delay: 2000 },
     ]
   },
   // Step 5: Real-time availability
