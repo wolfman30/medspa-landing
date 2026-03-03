@@ -440,15 +440,17 @@ const STEPS = [
       { type: 'outgoing', text: "First time!", delay: 2000 },
     ]
   },
-  // Step 4: Provider preference
+  // Step 4: Provider preference + Schedule
   {
-    label: "🎯 AI qualifies — Provider Preference",
+    label: "🎯 AI qualifies — Provider & Schedule",
     messages: [
-      { type: 'incoming', text: "Welcome! Do you have a preference for your Botox provider? Our providers are Steineck, Tiffany Steineck, Angela Solenthaler, Amy Petrillo. Or no preference is totally fine!", delay: 1200 },
+      { type: 'incoming', text: "Welcome! Do you have a preference for your provider? Our providers are Steineck, Tiffany Steineck, Angela Solenthaler, Amy Petrillo. Or no preference is totally fine!", delay: 1200 },
       { type: 'outgoing', text: "No preference", delay: 2000 },
+      { type: 'incoming', text: "No problem! What days and times generally work best for you?", delay: 1200 },
+      { type: 'outgoing', text: "Thursdays after 4pm", delay: 2000 },
     ]
   },
-  // Step 5: Schedule preference + availability
+  // Step 5: Real-time availability
   {
     label: "⚡ AI checks REAL availability (Moxie API)",
     messages: [
@@ -470,8 +472,8 @@ const STEPS = [
     messages: [
       { type: 'incoming', text: "Great choice! I've got Thursday, May 7 at 4:15 PM for $9 Tox Offer. To complete your booking, I just need your email address. What's the best email for you?", delay: 1500 },
       { type: 'outgoing', text: "sarah.johnson@gmail.com", delay: 2000 },
-      { type: 'incoming', text: "Your $50.00 deposit applies toward your treatment cost and secures your appointment. Please note: deposits are forfeited for no-shows or late cancellations.", delay: 2500 },
-      { type: 'incoming', text: "Tap below to secure your spot:", delay: 1500, hasPayment: true },
+      { type: 'incoming', text: "Perfect, thanks Sarah! You're almost booked. There's just a small $50.00 deposit to secure your spot — it applies directly toward your treatment cost, so you're not paying extra.\n\nPlease note: deposits are forfeited for no-shows or late cancellations.", delay: 2500 },
+      { type: 'incoming', text: "Here's your secure payment link:", delay: 1500, hasPayment: true },
     ]
   },
   // Step 8: Confirmation
