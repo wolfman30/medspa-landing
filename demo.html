@@ -329,12 +329,90 @@
 </div>
 
 <script>
+// ── iPhone-style sound effects via Web Audio API ──
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx;
+function ensureAudio() {
+  if (!audioCtx) audioCtx = new AudioCtx();
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function playRingtone() {
+  ensureAudio();
+  // Short ringtone — two ascending tones repeated
+  const notes = [880, 1108, 880, 1108, 880, 1108];
+  notes.forEach((freq, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.15);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.15 + 0.12);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(audioCtx.currentTime + i * 0.15);
+    osc.stop(audioCtx.currentTime + i * 0.15 + 0.12);
+  });
+}
+
+function playReceive() {
+  ensureAudio();
+  // iMessage tri-tone receive sound
+  const notes = [1200, 1600, 1800];
+  notes.forEach((freq, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.12, audioCtx.currentTime + i * 0.08);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.08 + 0.1);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(audioCtx.currentTime + i * 0.08);
+    osc.stop(audioCtx.currentTime + i * 0.08 + 0.1);
+  });
+}
+
+function playSend() {
+  ensureAudio();
+  // Swoosh send sound — descending frequency sweep
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.type = 'sine';
+  osc.frequency.setValueAtTime(1400, audioCtx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.15);
+  gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.2);
+  osc.connect(gain);
+  gain.connect(audioCtx.destination);
+  osc.start();
+  osc.stop(audioCtx.currentTime + 0.2);
+}
+
+function playPayment() {
+  ensureAudio();
+  // Cheerful cha-ching
+  const notes = [1047, 1319, 1568];
+  notes.forEach((freq, i) => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.15, audioCtx.currentTime + i * 0.12);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + i * 0.12 + 0.2);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start(audioCtx.currentTime + i * 0.12);
+    osc.stop(audioCtx.currentTime + i * 0.12 + 0.2);
+  });
+}
+
 const STEPS = [
   // Step 0: Missed call trigger
   {
     label: "📞 Patient calls, nobody picks up...",
     messages: [
-      { type: 'system', text: '📞 Missed call from (330) 555-8472', delay: 500 },
+      { type: 'system', text: '📞 Missed call from (330) 555-8472', delay: 500, sound: 'ringtone' },
       { type: 'system', text: 'AI responds in under 5 seconds', delay: 1500 },
       { type: 'incoming', text: "Hey there! 👋 Thanks for calling Adela Medical Spa — sorry we missed you! I'm the clinic's AI assistant and I can help you right now. What were you calling about?", delay: 2500 },
     ]
@@ -398,7 +476,7 @@ const STEPS = [
   {
     label: "✅ Booked! Appointment confirmed automatically",
     messages: [
-      { type: 'system', text: '💳 Payment received via Stripe → Auto-booking on Moxie...', delay: 800 },
+      { type: 'system', text: '💳 Payment received via Stripe → Auto-booking on Moxie...', delay: 800, sound: 'payment' },
       { type: 'incoming', text: "You're all set, Sarah! 🎉\n\n📅 Dysport — Wed, March 12 at 4:00 PM\n📍 Adela Medical Spa — 5562 Fulton Dr NW, Canton\n👩‍⚕️ Angela Solenthaler\n\nWe'll send a reminder 24 hours before. See you then!", delay: 2200 },
       { type: 'system', text: '✅ Lead recovered. $0 staff time. Under 3 minutes.', delay: 3500 },
     ]
@@ -465,6 +543,12 @@ function enableNext() {
 }
 
 function addMessage(msg) {
+  // Play sound effects
+  if (msg.sound === 'ringtone') playRingtone();
+  else if (msg.sound === 'payment') playPayment();
+  else if (msg.type === 'incoming') playReceive();
+  else if (msg.type === 'outgoing') playSend();
+
   const el = document.createElement('div');
   el.className = 'msg ' + msg.type;
   el.textContent = msg.text;
