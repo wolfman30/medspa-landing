@@ -551,7 +551,7 @@ function addMessage(msg) {
 
   const el = document.createElement('div');
   el.className = 'msg ' + msg.type;
-  el.textContent = msg.text;
+  el.innerHTML = msg.text.replace(/\n/g, '<br>');
   chat.appendChild(el);
 
   if (msg.hasPayment) {
