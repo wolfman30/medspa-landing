@@ -7,7 +7,7 @@
 <meta name="description" content="Never lose a patient to a missed call again. MedSpa Concierge texts back instantly, qualifies leads, and books appointments — all via SMS, 24/7.">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1a1a2e;--navy-light:#16213e;--gold:#d4a574;--gold-light:#e8c9a0;--white:#ffffff;--gray-50:#f8f9fa;--gray-100:#f0f0f0;--gray-400:#999;--gray-600:#666;--text:#2c2c2c;--radius:12px}
+:root{--navy:#1e293b;--navy-light:#334155;--gold:#5b9bd5;--gold-light:#7eb8e8;--white:#ffffff;--gray-50:#f8f9fa;--gray-100:#f0f0f0;--gray-400:#999;--gray-600:#666;--text:#2c2c2c;--radius:12px}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
 
@@ -16,22 +16,22 @@ nav{position:fixed;top:0;width:100%;background:rgba(26,26,46,.95);backdrop-filte
 nav .logo{color:var(--gold);font-weight:700;font-size:1.1rem;letter-spacing:.5px;display:flex;align-items:center;gap:.5rem}
 nav .logo img{height:32px;width:32px;border-radius:50%}
 nav .logo span{color:var(--white)}
-nav a.cta-sm{background:var(--gold);color:var(--navy);padding:.5rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s}
+nav a.cta-sm{background:var(--gold);color:var(--white);padding:.5rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s}
 nav a.cta-sm:hover{background:var(--gold-light)}
 
 /* ── HERO ── */
 .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);padding:8rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:80px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-logo{width:80px;height:80px;border-radius:50%;margin:0 auto 1.5rem;box-shadow:0 8px 30px rgba(212,165,116,.3);border:2px solid rgba(212,165,116,.3)}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:40px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-logo{width:80px;height:80px;border-radius:50%;margin:0 auto 1.5rem;box-shadow:0 8px 30px rgba(91,155,213,.3);border:2px solid rgba(91,155,213,.3)}
 .hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;max-width:800px;margin:0 auto 1.25rem;line-height:1.15}
 .hero h1 .gold{color:var(--gold)}
 .hero p.sub{font-size:clamp(1rem,2.5vw,1.25rem);opacity:.85;max-width:600px;margin:0 auto 2.5rem;line-height:1.5}
 .hero .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-block;background:var(--gold);color:var(--navy);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,165,116,.4)}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(91,155,213,.4)}
 .btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.3);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:600;text-decoration:none;transition:border-color .2s}
 .btn-outline:hover{border-color:var(--gold)}
-.hero .trust{margin-top:2.5rem;font-size:.85rem;opacity:.5}
+.hero .trust{margin-top:2.5rem;margin-bottom:3rem;font-size:.85rem;opacity:.5;position:relative;z-index:1}
 
 /* ── SECTIONS ── */
 section{padding:5rem 2rem}
@@ -54,7 +54,7 @@ section{padding:5rem 2rem}
 .sms-header{text-align:center;color:var(--white);font-size:.8rem;opacity:.6;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.1)}
 .sms-header strong{display:block;font-size:1rem;opacity:1;margin-top:.25rem}
 .bubble{max-width:85%;padding:.75rem 1rem;border-radius:16px;margin-bottom:.6rem;font-size:.9rem;line-height:1.4;clear:both;animation:fadeUp .4s ease both}
-.bubble.ai{background:var(--gold);color:var(--navy);float:left;border-bottom-left-radius:4px}
+.bubble.ai{background:var(--gold);color:var(--white);float:left;border-bottom-left-radius:4px}
 .bubble.patient{background:#3a3a5c;color:var(--white);float:right;border-bottom-right-radius:4px;text-align:right}
 .bubble::after{content:'';display:table;clear:both}
 .sms-convo::after{content:'';display:table;clear:both}
@@ -85,7 +85,7 @@ section{padding:5rem 2rem}
 
 /* ── PRICING ── */
 .pricing-card{max-width:500px;margin:0 auto;background:var(--white);border:2px solid var(--gold);border-radius:20px;padding:3rem;text-align:center;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.08)}
-.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-weight:700;font-size:.8rem;padding:.4rem 1.25rem;border-radius:20px;white-space:nowrap}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--white);font-weight:700;font-size:.8rem;padding:.4rem 1.25rem;border-radius:20px;white-space:nowrap}
 .pricing-card .price{font-size:3.5rem;font-weight:800;color:var(--navy);margin:1rem 0 .25rem}
 .pricing-card .price sup{font-size:1.5rem;vertical-align:super}
 .pricing-card .per{color:var(--gray-600);margin-bottom:1.5rem}
