@@ -334,7 +334,15 @@ const AudioCtx = window.AudioContext || window.webkitAudioContext;
 let audioCtx;
 function ensureAudio() {
   if (!audioCtx) audioCtx = new AudioCtx();
-  if (audioCtx.state === 'suspended') audioCtx.resume();
+  if (audioCtx.state === 'suspended') {
+    audioCtx.resume();
+    // iOS unlock: play a silent buffer to fully unlock audio
+    const buf = audioCtx.createBuffer(1, 1, 22050);
+    const src = audioCtx.createBufferSource();
+    src.buffer = buf;
+    src.connect(audioCtx.destination);
+    src.start(0);
+  }
 }
 
 function playRingtone() {
@@ -500,6 +508,9 @@ const progressEl = document.getElementById('progress');
 const stepLabel = document.getElementById('stepLabel');
 
 function nextStep() {
+  // iOS Safari requires AudioContext creation inside a direct user gesture
+  if (!audioCtx) { audioCtx = new AudioCtx(); }
+  if (audioCtx.state === 'suspended') { audioCtx.resume(); }
   currentStep++;
   if (currentStep >= STEPS.length) {
     nextBtn.disabled = true;
