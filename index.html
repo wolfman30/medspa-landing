@@ -1,322 +1,319 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MedSpa Concierge — AI Revenue Engine for Multi-Location Med Spas</title>
-    <meta
-      name="description"
-      content="AI-powered receptionist platform that recovers missed revenue, books appointments, and proves ROI — built for med spa groups and chains."
-    />
-    <link rel="icon" type="image/jpeg" href="logo-wolf.jpg" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="hero" id="top">
-      <div class="hero__content">
-        <nav class="nav" aria-label="Primary">
-          <a class="nav__brand" href="#top"><img src="logo-wolf.jpg" alt="AI Wolf Solutions" style="height:40px;vertical-align:middle;margin-right:8px;border-radius:50%">Medspa Concierge</a>
-          <button class="nav__toggle" id="navToggle" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            &#9776;
-          </button>
-          <ul class="nav__links" id="navLinks">
-            <li><a href="#about">Platform</a></li>
-            <li><a href="#consent">Compliance</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="demo.html">Demo</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-            <li><a href="https://portal-dev.aiwolfsolutions.com" class="nav__link--portal">Sign In</a></li>
-          </ul>
-        </nav>
-        <div class="hero__copy">
-          <p class="hero__kicker">AI revenue engine for med spa groups</p>
-          <h1>Every missed call is lost revenue. We recover it — and prove it.</h1>
-          <p>
-            MedSpa Concierge is an AI-powered receptionist platform built for
-            multi-location med spas. We answer every missed call in seconds,
-            qualify patients, book appointments directly into your EMR, collect
-            deposits, and show you exactly how much revenue we recovered — across
-            all your locations, in one dashboard.
-          </p>
-          <div class="hero__actions">
-            <a class="btn" href="#contact">Book a strategy call</a>
-            <a class="btn btn--secondary" href="demo.html">See the demo</a>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedSpa Concierge — 24/7 AI Receptionist for Med Spas | AI Wolf Solutions</title>
+<meta name="description" content="Never lose a patient to a missed call again. MedSpa Concierge texts back instantly, qualifies leads, and books appointments — all via SMS, 24/7.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1a1a2e;--navy-light:#16213e;--gold:#d4a574;--gold-light:#e8c9a0;--white:#ffffff;--gray-50:#f8f9fa;--gray-100:#f0f0f0;--gray-400:#999;--gray-600:#666;--text:#2c2c2c;--radius:12px}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;width:100%;background:rgba(26,26,46,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
+nav .logo{color:var(--gold);font-weight:700;font-size:1.1rem;letter-spacing:.5px;display:flex;align-items:center;gap:.5rem}
+nav .logo img{height:32px;width:32px;border-radius:50%}
+nav .logo span{color:var(--white)}
+nav a.cta-sm{background:var(--gold);color:var(--navy);padding:.5rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s}
+nav a.cta-sm:hover{background:var(--gold-light)}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);padding:8rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:80px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
+.hero-logo{width:80px;height:80px;border-radius:50%;margin:0 auto 1.5rem;box-shadow:0 8px 30px rgba(212,165,116,.3);border:2px solid rgba(212,165,116,.3)}
+.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;max-width:800px;margin:0 auto 1.25rem;line-height:1.15}
+.hero h1 .gold{color:var(--gold)}
+.hero p.sub{font-size:clamp(1rem,2.5vw,1.25rem);opacity:.85;max-width:600px;margin:0 auto 2.5rem;line-height:1.5}
+.hero .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--navy);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(212,165,116,.4)}
+.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.3);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:600;text-decoration:none;transition:border-color .2s}
+.btn-outline:hover{border-color:var(--gold)}
+.hero .trust{margin-top:2.5rem;font-size:.85rem;opacity:.5}
+
+/* ── SECTIONS ── */
+section{padding:5rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{text-transform:uppercase;font-size:.8rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:.5rem}
+.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin-bottom:1rem}
+.section-sub{color:var(--gray-600);max-width:600px;font-size:1.05rem;margin-bottom:3rem}
+
+/* ── PROBLEM ── */
+.problem{background:var(--gray-50)}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.problem-stats{display:flex;flex-direction:column;gap:1.5rem}
+.stat-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.06)}
+.stat-card .num{font-size:2.2rem;font-weight:800;color:var(--navy)}
+.stat-card .num span{color:var(--gold)}
+.stat-card p{color:var(--gray-600);font-size:.95rem;margin-top:.25rem}
+
+/* ── SMS MOCK ── */
+.sms-phone{background:var(--navy);border-radius:28px;padding:1.5rem;max-width:340px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.sms-header{text-align:center;color:var(--white);font-size:.8rem;opacity:.6;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.sms-header strong{display:block;font-size:1rem;opacity:1;margin-top:.25rem}
+.bubble{max-width:85%;padding:.75rem 1rem;border-radius:16px;margin-bottom:.6rem;font-size:.9rem;line-height:1.4;clear:both;animation:fadeUp .4s ease both}
+.bubble.ai{background:var(--gold);color:var(--navy);float:left;border-bottom-left-radius:4px}
+.bubble.patient{background:#3a3a5c;color:var(--white);float:right;border-bottom-right-radius:4px;text-align:right}
+.bubble::after{content:'';display:table;clear:both}
+.sms-convo::after{content:'';display:table;clear:both}
+.bubble-time{font-size:.7rem;opacity:.5;margin-top:.2rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.bubble:nth-child(2){animation-delay:.1s}
+.bubble:nth-child(3){animation-delay:.2s}
+.bubble:nth-child(4){animation-delay:.3s}
+.bubble:nth-child(5){animation-delay:.4s}
+.bubble:nth-child(6){animation-delay:.5s}
+.bubble:nth-child(7){animation-delay:.6s}
+.bubble:nth-child(8){animation-delay:.7s}
+
+/* ── HOW IT WORKS ── */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:step}
+.step{text-align:center;padding:2rem 1.5rem;border-radius:var(--radius);background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.05);position:relative}
+.step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--navy);color:var(--gold);font-weight:800;font-size:1.2rem;border-radius:50%;margin:0 auto 1.25rem}
+.step h3{font-size:1.1rem;color:var(--navy);margin-bottom:.5rem}
+.step p{color:var(--gray-600);font-size:.95rem}
+
+/* ── FEATURES ── */
+.features{background:var(--gray-50)}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.feat{display:flex;gap:1rem;padding:1.5rem;background:var(--white);border-radius:var(--radius);box-shadow:0 2px 15px rgba(0,0,0,.04)}
+.feat-icon{width:44px;height:44px;min-width:44px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+.feat h4{font-size:1rem;color:var(--navy);margin-bottom:.25rem}
+.feat p{font-size:.9rem;color:var(--gray-600)}
+
+/* ── PRICING ── */
+.pricing-card{max-width:500px;margin:0 auto;background:var(--white);border:2px solid var(--gold);border-radius:20px;padding:3rem;text-align:center;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.08)}
+.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy);font-weight:700;font-size:.8rem;padding:.4rem 1.25rem;border-radius:20px;white-space:nowrap}
+.pricing-card .price{font-size:3.5rem;font-weight:800;color:var(--navy);margin:1rem 0 .25rem}
+.pricing-card .price sup{font-size:1.5rem;vertical-align:super}
+.pricing-card .per{color:var(--gray-600);margin-bottom:1.5rem}
+.pricing-card ul{list-style:none;text-align:left;margin-bottom:2rem}
+.pricing-card li{padding:.5rem 0;border-bottom:1px solid var(--gray-100);font-size:.95rem;color:var(--gray-600)}
+.pricing-card li::before{content:'✓';color:var(--gold);font-weight:700;margin-right:.75rem}
+.pricing-card .setup{background:var(--navy);color:var(--white);padding:.75rem 1.5rem;border-radius:10px;display:inline-block;margin-bottom:1.5rem;font-size:.9rem}
+.pricing-card .setup s{opacity:.6}
+.pricing-card .setup strong{color:var(--gold)}
+
+/* ── CTA ── */
+.final-cta{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);text-align:center;padding:5rem 2rem}
+.final-cta h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:1rem}
+.final-cta p{opacity:.8;max-width:550px;margin:0 auto 2rem;font-size:1.1rem}
+
+/* ── FOOTER ── */
+footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-size:.85rem}
+footer a{color:var(--gold);text-decoration:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  .problem-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .feat-grid{grid-template-columns:1fr}
+  section{padding:3.5rem 1.5rem}
+  .hero{padding:7rem 1.5rem 4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo"><img src="logo-wolf.jpg" alt="AI Wolf Solutions">MedSpa <span>Concierge</span></div>
+  <a href="https://calendly.com/aiwolfsolutions" class="cta-sm">Book a Demo</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="logo-wolf.jpg" alt="AI Wolf Solutions" class="hero-logo">
+  <h1>Every Missed Call Is a <span class="gold">Lost Patient.</span></h1>
+  <p class="sub">MedSpa Concierge texts back instantly, qualifies leads, and books appointments — all via SMS, 24/7. Your competitors are one Google search away. Don't let them win.</p>
+  <div class="cta-row">
+    <a href="https://calendly.com/aiwolfsolutions" class="btn-primary">Book a Demo →</a>
+    <a href="#how" class="btn-outline">See How It Works</a>
+  </div>
+  <p class="trust">Trusted by med spas · No contracts · Cancel anytime</p>
+</section>
+
+<!-- PROBLEM + SMS MOCK -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <p class="section-label">The Problem</p>
+        <h2 class="section-title">Your Front Desk Can't Answer Every Call.</h2>
+        <p class="section-sub" style="margin-bottom:2rem">While you're with a patient, your phone rings. By the time you call back, they've already booked with someone else.</p>
+        <div class="problem-stats">
+          <div class="stat-card">
+            <div class="num">62<span>%</span></div>
+            <p>of calls to med spas go unanswered during business hours</p>
           </div>
-          <p class="hero__micro">Works with Moxie, Boulevard, and more. Deploy to one location in days — scale to all of them.</p>
+          <div class="stat-card">
+            <div class="num"><span>$</span>1,200+</div>
+            <p>average lifetime value of a single med spa patient</p>
+          </div>
+          <div class="stat-card">
+            <div class="num">< <span>90s</span></div>
+            <p>MedSpa Concierge average response time via text</p>
+          </div>
         </div>
       </div>
-    </header>
-
-    <main>
-      <section class="section" id="about">
-        <div class="section__content">
-          <h2>Built for operations leaders who manage multiple locations</h2>
-          <div class="features">
-            <article class="card">
-              <h3>AI receptionist — every location, 24/7</h3>
-              <p>
-                Every missed call gets an intelligent SMS response in under 15
-                seconds. Patients are qualified, preferences captured, and
-                appointments booked — without adding headcount at any location.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Revenue attribution dashboard</h3>
-              <p>
-                See exactly how many leads were recovered, appointments booked,
-                and deposits collected — per location, per month. Know your ROI
-                down to the dollar, not the guess.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Direct EMR booking + deposits</h3>
-              <p>
-                We book directly into Moxie, Boulevard, and other EMRs — no
-                staff follow-up needed. Deposits collected via Stripe before the
-                appointment is confirmed. Fewer no-shows, more revenue.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Voice AI receptionist</h3>
-              <p>
-                Live AI voice agent answers calls when your front desk can't.
-                Natural conversation, real-time availability, seamless handoff
-                to SMS for booking and payment. Coming Q1 2026.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Proactive rebooking</h3>
-              <p>
-                Automatically re-engage patients when it's time for their next
-                treatment. "It's been 4 weeks since your Botox — ready to
-                rebook?" turns one-time visits into recurring revenue.
-              </p>
-            </article>
-            <article class="card">
-              <h3>Scale without scaling staff</h3>
-              <p>
-                Deploy to one location as a pilot. When it proves ROI, roll out
-                to all locations with a single config change. Same AI, same
-                quality, every location.
-              </p>
-            </article>
+      <div>
+        <div class="sms-phone">
+          <div class="sms-header">Messages<br><strong>MedSpa Concierge</strong></div>
+          <div class="sms-convo">
+            <div class="bubble ai">Hi! Thanks for calling Glow Aesthetics. 😊 We're with a patient right now — how can I help you via text?</div>
+            <div style="clear:both"></div>
+            <div class="bubble patient">Hi! I'm interested in Botox. Do you have anything this week?</div>
+            <div style="clear:both"></div>
+            <div class="bubble ai">Great choice! Are you a new or returning patient?</div>
+            <div style="clear:both"></div>
+            <div class="bubble patient">New patient!</div>
+            <div style="clear:both"></div>
+            <div class="bubble ai">Welcome! 🎉 I have openings Thursday at 2pm or Friday at 10am. Which works better?</div>
+            <div style="clear:both"></div>
+            <div class="bubble patient">Thursday at 2 works!</div>
+            <div style="clear:both"></div>
+            <div class="bubble ai">Perfect! Here's a secure link to confirm with a $50 deposit and you're all set: pay.glowmed.com/book ✨</div>
+            <div style="clear:both"></div>
           </div>
-        </div>
-      </section>
-
-      <section class="section section--alt" id="consent">
-        <div class="section__content">
-          <h2>Responsible messaging and compliance</h2>
-          <div class="grid">
-            <div>
-              <h3>Clear opt-in</h3>
-              <p>
-                Website visitors opt in through our booking widget checkbox.
-                For missed-call follow-ups, we provide consent language and help
-                you implement the right opt-in for your clinic's workflow.
-                All enrollment language includes message frequency, rates, and STOP instructions.
-              </p>
-              <p>
-                Review the full
-                <a href="consent.html">SMS Consent Policy</a>
-                and our
-                <a href="privacy.html">Privacy Policy</a>
-                <span aria-hidden="true">·</span>
-                <a href="terms.html">Terms &amp; Conditions</a>
-                for the exact terms shared with patients and data practices.
-              </p>
-            </div>
-            <div>
-              <h3>Easy opt-out</h3>
-              <p>
-                Text STOP, END, CANCEL, or UNSUBSCRIBE at any time to halt
-                messages instantly. Our system logs opt-outs and prevents future
-                sends until consent is restored with START or YES.
-              </p>
-            </div>
-            <div>
-              <h3>Keep Your Number for Text Messaging</h3>
-              <p>
-                We keep your phone number and register your brand and use
-                case (campaign) for verified messaging. We handle most of the
-                process; your team only needs to submit the required
-                identification details to begin approval. This entire approval process typically takes
-                5-7 business days.
-              </p>
-            </div>
-            <div>
-              <h3>Audit-ready records</h3>
-              <p>
-                Consent status, message templates, and delivery history are
-                retained for compliance reviews. Administrators can export
-                records at any time.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-            <section class="section" id="contact">
-        <div class="section__content contact">
-          <h2>Let&apos;s talk about your locations</h2>
-          <div class="contact__flex">
-            <div class="contact__info card">
-              <p>
-                MedSpa Concierge is built by
-                <strong>AI Wolf Solutions</strong> for multi-location med spas
-                and aesthetic clinic groups. We work with COOs, VPs of Operations,
-                and practice managers to recover missed revenue with AI-powered
-                patient engagement — and prove every dollar.
-              </p>
-              <ul class="contact__details">
-                <li>
-                  <span>Email</span>
-                  <a href="mailto:andrew@aiwolfsolutions.com">andrew@aiwolfsolutions.com</a>
-                </li>
-                <li>
-                  <span>Phone</span>
-                  <a href="tel:+13303332654">+1 (330) 333-2654</a>
-                </li>
-                <li>
-                  <span>Business hours</span>
-                  Monday–Friday, 9:00am–5:00pm Eastern
-                </li>
-              </ul>
-              <p class="contact__consent-note">
-                Clinic operators can text our concierge number directly from this page
-                or submit the form to opt in. Every submission is logged with the
-                consent language shown, so only opted-in business contacts receive SMS
-                follow-ups about the platform.
-              </p>
-              <p class="small-print">
-                Message and data rates may apply. Reply STOP to opt out of SMS, or
-                HELP for assistance.
-              </p>
-            </div>
-            <form
-              id="leadForm"
-              class="contact__form card"
-              data-endpoint="https://api.aiwolfsolutions.com/leads/web"
-              novalidate
-            >
-              <div class="form-field">
-                <label for="leadName">Full name</label>
-                <input
-                  id="leadName"
-                  name="name"
-                  type="text"
-                  autocomplete="name"
-                  required
-                />
-              </div>
-              <div class="form-row">
-                <div class="form-field">
-                  <label for="leadPhone">Mobile number</label>
-                  <input
-                    id="leadPhone"
-                    name="phone"
-                    type="tel"
-                    inputmode="tel"
-                    pattern="\+?[0-9\-\s]{7,}"
-                    placeholder="+1 415 555 1234"
-                    required
-                  />
-                </div>
-                <div class="form-field">
-                  <label for="leadEmail">Email</label>
-                  <input
-                    id="leadEmail"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    required
-                  />
-                </div>
-              </div>
-              <div class="form-field">
-                <label for="leadService">Primary focus</label>
-                <select id="leadService" name="service" required>
-                  <option value="" disabled selected>Select one</option>
-                  <option value="missed_calls">Missed call recovery</option>
-                  <option value="voice_ai">AI voice receptionist</option>
-                  <option value="revenue_attribution">Revenue attribution &amp; reporting</option>
-                  <option value="multi_location">Multi-location rollout</option>
-                  <option value="rebooking">Proactive patient rebooking</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="leadNotes">Notes (optional)</label>
-                <textarea
-                  id="leadNotes"
-                  name="notes"
-                  rows="3"
-                  placeholder="Number of locations, current EMR, biggest operational pain point..."
-                ></textarea>
-              </div>
-              <div class="form-checkbox">
-                <input type="checkbox" id="smsConsent" name="sms_consent" required />
-                <label for="smsConsent">
-                  I agree to receive SMS updates from AI Wolf Solutions about demos,
-                  onboarding, and product announcements for the Medspa Concierge
-                  platform. Msg &amp; data rates may apply. Reply STOP to opt out or
-                  HELP for help.
-                </label>
-              </div>
-              <input type="hidden" name="clinic_id" value="demo-clinic" />
-              <input type="hidden" name="source" value="medspa-landing" />
-              <button type="submit" class="btn btn--full">Request a concierge follow-up</button>
-              <p class="small-print">
-                By submitting you consent to being contacted at the phone number and
-                email provided, including by automated SMS, about Medspa Concierge
-                product updates, onboarding, and support for your clinic.
-              </p>
-            </form>
-          </div>
-          <div id="leadFormStatus" class="form-status" role="status" aria-live="polite"></div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <div class="footer__content">
-        <p>
-          &copy; <span id="year"></span> AI Wolf Solutions. All rights reserved.
-        </p>
-        <div class="footer__links">
-          <a href="#top">Back to top</a>
-          <span aria-hidden="true">·</span>
-          <a href="consent.html">SMS Consent Policy</a>
-          <span aria-hidden="true">·</span>
-          <a href="privacy.html">Privacy Policy</a>
         </div>
       </div>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
-    <a
-      href="sms:+13303332654?body=Hi%20Medspa%20Concierge%2C%20I%27d%20like%20to%20learn%20how%20your%20AI%20rescues%20missed%20leads."
-      class="sms-widget"
-      aria-label="Text our concierge number to start booking"
-    >
-      <span class="sms-widget__icon" aria-hidden="true">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M8 10h8M8 14h5m9-3a7 7 0 0 1-7 7H8l-4 3V7a5 5 0 0 1 5-5h6a7 7 0 0 1 7 7v2Z"
-          />
-        </svg>
-      </span>
-      <span class="sms-widget__text">
-        <span class="sms-widget__kicker">Text the concierge</span>
-        <strong>+1 (330) 333-2654</strong>
-      </span>
-      <span class="sms-widget__arrow" aria-hidden="true">→</span>
-    </a>
-  </body>
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Three Steps. Zero Effort.</h2>
+    <p class="section-sub">Set it up once, then let MedSpa Concierge handle the rest.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Patient Calls, You're Busy</h3>
+        <p>A missed call triggers an instant, personalized text message to the caller within seconds.</p>
+      </div>
+      <div class="step">
+        <h3>AI Qualifies & Finds Times</h3>
+        <p>The AI asks their name, desired service, and whether they're new — then pulls real-time availability from your calendar.</p>
+      </div>
+      <div class="step">
+        <h3>Booked & Paid Automatically</h3>
+        <p>Patient picks a time, pays a deposit via secure Stripe checkout, and gets confirmed — no staff needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="container">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">Everything You Need. Nothing You Don't.</h2>
+    <p class="section-sub">Built specifically for med spas and aesthetic clinics.</p>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">⚡</div>
+        <div>
+          <h4>Instant Missed-Call Text-Back</h4>
+          <p>24/7 or after-hours only — you choose. Patients hear back in seconds, not hours.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎯</div>
+        <div>
+          <h4>Smart Lead Qualification</h4>
+          <p>AI gathers name, service interest, and patient status before booking — so you know who's coming.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📅</div>
+        <div>
+          <h4>Real-Time Availability</h4>
+          <p>Syncs with your booking system to offer only open slots. No double-bookings, ever.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💳</div>
+        <div>
+          <h4>Secure Deposit Collection</h4>
+          <p>Stripe-powered checkout links reduce no-shows and lock in the appointment.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <div>
+          <h4>Admin Portal</h4>
+          <p>See every conversation, track conversions, and manage your AI receptionist from one dashboard.</p>
+        </div>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🔌</div>
+        <div>
+          <h4>Works with Moxie</h4>
+          <p>Native integration with Moxie — more platforms coming soon. Your workflow, enhanced.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="container" style="text-align:center">
+    <p class="section-label">Pricing</p>
+    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Simple. Transparent. Two Plans.</h2>
+    <p class="section-sub" style="margin-left:auto;margin-right:auto">No hidden fees. No per-message charges. No contracts.</p>
+    <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;max-width:800px;margin:0 auto">
+      <div class="pricing-card" style="flex:1;min-width:300px">
+        <div class="pricing-badge">📱 Text-Back</div>
+        <div class="price"><sup>$</sup>500</div>
+        <div class="per">per month</div>
+        <div class="setup"><s>$1,500 setup fee</s> → <strong>FREE</strong> for first 10 clients</div>
+        <ul>
+          <li>Unlimited SMS conversations</li>
+          <li>24/7 AI receptionist</li>
+          <li>Real-time booking integration</li>
+          <li>Stripe deposit collection</li>
+          <li>Admin dashboard access</li>
+          <li>Dedicated onboarding support</li>
+          <li>Cancel anytime — no contracts</li>
+        </ul>
+        <a href="https://calendly.com/aiwolfsolutions" class="btn-primary" style="width:100%;text-align:center">Get Started →</a>
+      </div>
+      <div class="pricing-card" style="flex:1;min-width:300px;border-color:#6C63FF">
+        <div class="pricing-badge" style="background:#6C63FF">🐺 Text + Voice AI</div>
+        <div class="price"><sup>$</sup>1,000</div>
+        <div class="per">per month</div>
+        <div class="setup"><s>$1,500 setup fee</s> → <strong>FREE</strong> for first 10 clients</div>
+        <ul>
+          <li><strong>Everything in Text-Back, plus:</strong></li>
+          <li>AI voice agent answers calls live</li>
+          <li>Qualifies patients by phone</li>
+          <li>Books appointments on the call</li>
+          <li>Custom voice & greeting</li>
+          <li>Call recordings & transcripts</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="https://calendly.com/aiwolfsolutions" class="btn-primary" style="width:100%;text-align:center;background:#6C63FF">Claim Your Founding Spot →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <h2>Stop Losing Patients to Missed Calls.</h2>
+  <p>See MedSpa Concierge in action with a free 15-minute demo. No pressure, no contracts — just results.</p>
+  <a href="https://calendly.com/aiwolfsolutions" class="btn-primary">Book Your Free Demo →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo-wolf.jpg" alt="AI Wolf Solutions" style="width:40px;height:40px;border-radius:50%;margin-bottom:.5rem;opacity:.7">
+  <p>© 2026 <a href="https://aiwolfsolutions.com">AI Wolf Solutions</a>. All rights reserved.</p>
+</footer>
+
+</body>
 </html>
