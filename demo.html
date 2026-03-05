@@ -608,6 +608,11 @@ function resetDemo() {
   nextBtn.textContent = 'Start Demo →';
   progressEl.style.width = '0%';
   stepLabel.textContent = 'Tap "Next" to start the demo';
+  // Close and reset AudioContext so iOS Safari re-unlocks on next tap
+  if (audioCtx) {
+    audioCtx.close().catch(() => {});
+    audioCtx = null;
+  }
 }
 </script>
 </body>
