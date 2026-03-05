@@ -315,7 +315,7 @@
     </div>
   </div>
   <div class="progress-bar"><div class="fill" id="progress" style="width: 0%"></div></div>
-  <div class="step-label" id="stepLabel">Tap "Next" to start the demo</div>
+  <div class="step-label" id="stepLabel"></div>
   <div class="chat-area" id="chat"></div>
   <div class="controls">
     <button class="btn-reset" onclick="resetDemo()">↺ Reset</button>
@@ -607,7 +607,7 @@ function resetDemo() {
   nextBtn.disabled = false;
   nextBtn.textContent = 'Start Demo →';
   progressEl.style.width = '0%';
-  stepLabel.textContent = 'Tap "Next" to start the demo';
+  stepLabel.textContent = '';
   // Close and reset AudioContext so iOS Safari re-unlocks on next tap
   if (audioCtx) {
     audioCtx.close().catch(() => {});
