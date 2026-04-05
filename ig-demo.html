@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>IG DM Lead Capture — MedSpa Concierge Demo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #0a0a0a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 40px 20px 20px;
+    max-width: 600px;
+  }
+  .hero .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1.3;
+  }
+  .hero p {
+    color: #9ca3af;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* Stats */
+  .stats {
+    display: flex;
+    gap: 20px;
+    padding: 16px 20px;
+    max-width: 600px;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat { text-align: center; }
+  .stat .value {
+    font-size: 24px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .stat .label { font-size: 12px; color: #6b7280; margin-top: 2px; }
+
+  /* Phone frame */
+  .phone-frame {
+    width: 375px;
+    max-width: 95vw;
+    background: #000;
+    border-radius: 40px;
+    border: 3px solid #262626;
+    overflow: hidden;
+    margin: 16px auto;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  }
+  .phone-notch {
+    height: 44px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .phone-notch .island {
+    width: 120px;
+    height: 28px;
+    background: #1a1a1a;
+    border-radius: 20px;
+  }
+
+  /* IG Header */
+  .ig-header {
+    background: #000;
+    padding: 10px 16px 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #262626;
+  }
+  .ig-back {
+    font-size: 22px;
+    color: #fff;
+    cursor: default;
+  }
+  .ig-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  .ig-avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .ig-header-info { flex: 1; }
+  .ig-header-name {
+    font-weight: 600;
+    font-size: 15px;
+    color: #fff;
+  }
+  .ig-header-status {
+    font-size: 12px;
+    color: #8e8e8e;
+  }
+  .ig-header-actions { display: flex; gap: 16px; }
+  .ig-header-actions span {
+    font-size: 20px;
+    color: #fff;
+    cursor: default;
+  }
+
+  /* Chat area */
+  .chat-area {
+    height: 480px;
+    overflow-y: auto;
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    scroll-behavior: smooth;
+    background: #000;
+  }
+  .chat-area::-webkit-scrollbar { width: 0; }
+
+  .timestamp {
+    text-align: center;
+    font-size: 11px;
+    color: #8e8e8e;
+    margin: 8px 0 4px;
+  }
+
+  .msg-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: msgIn 0.3s ease-out;
+  }
+  .msg-row.outgoing { justify-content: flex-end; }
+  .msg-row.incoming { justify-content: flex-start; }
+
+  .msg-avatar {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    flex-shrink: 0;
+    color: #fff;
+  }
+  .msg-row.outgoing .msg-avatar { display: none; }
+
+  .msg {
+    max-width: 75%;
+    padding: 10px 14px;
+    font-size: 14px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg.incoming {
+    background: #262626;
+    color: #f5f5f5;
+    border-radius: 18px 18px 18px 4px;
+  }
+  .msg.outgoing {
+    background: #3797f0;
+    color: #fff;
+    border-radius: 18px 18px 4px 18px;
+  }
+  .msg.system {
+    align-self: center;
+    background: rgba(131, 58, 180, 0.15);
+    color: #c27aff;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 12px;
+    max-width: 90%;
+    text-align: center;
+    animation: msgIn 0.3s ease-out;
+  }
+
+  .msg a {
+    color: #7dd3fc;
+    text-decoration: underline;
+    word-break: break-all;
+  }
+
+  .typing-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    animation: msgIn 0.3s ease-out;
+  }
+  .typing {
+    display: flex;
+    gap: 4px;
+    padding: 12px 18px;
+    background: #262626;
+    border-radius: 18px 18px 18px 4px;
+  }
+  .typing span {
+    width: 7px;
+    height: 7px;
+    background: #555;
+    border-radius: 50%;
+    animation: typingBounce 1.4s infinite ease-in-out;
+  }
+  .typing span:nth-child(2) { animation-delay: 0.2s; }
+  .typing span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  /* IG-style quick reply row */
+  .quick-replies {
+    padding: 8px 16px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    animation: msgIn 0.3s ease-out;
+  }
+  .quick-reply {
+    padding: 6px 14px;
+    border: 1px solid #363636;
+    border-radius: 16px;
+    font-size: 13px;
+    color: #fff;
+    background: transparent;
+    cursor: default;
+  }
+
+  /* Bottom controls */
+  .controls {
+    padding: 10px 16px 24px;
+    background: #000;
+    border-top: 1px solid #262626;
+    display: flex;
+    gap: 8px;
+  }
+  .controls button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-next {
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: #fff;
+  }
+  .btn-next:hover { transform: scale(1.02); }
+  .btn-next:disabled {
+    background: #262626;
+    color: #555;
+    cursor: not-allowed;
+    transform: none;
+  }
+  .btn-reset {
+    background: #1a1a1a;
+    color: #8e8e8e;
+    flex: 0.4;
+    border: 1px solid #262626;
+  }
+  .btn-reset:hover { background: #262626; }
+
+  /* Progress bar */
+  .progress-bar {
+    width: 100%;
+    height: 3px;
+    background: #1a1a1a;
+  }
+  .progress-bar .fill {
+    height: 100%;
+    background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045);
+    transition: width 0.5s ease;
+  }
+
+  .step-label {
+    text-align: center;
+    color: #8e8e8e;
+    font-size: 12px;
+    padding: 6px 0 2px;
+    font-weight: 500;
+    background: #000;
+  }
+
+  /* Footer CTA */
+  .cta {
+    text-align: center;
+    padding: 28px 20px 40px;
+    max-width: 600px;
+  }
+  .cta h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #fff;
+    line-height: 1.3;
+  }
+  .cta .subtitle {
+    color: #8e8e8e;
+    font-size: 14px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  .cta a {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #6366f1, #7c3aed);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: transform 0.2s;
+  }
+  .cta a:hover { transform: scale(1.05); }
+  .cta .pricing {
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+  }
+
+  .ig-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    background: #000;
+    border-top: 1px solid #262626;
+  }
+  .ig-input-bar .camera-icon {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .ig-input-bar .input-placeholder {
+    flex: 1;
+    background: #262626;
+    border-radius: 20px;
+    padding: 8px 14px;
+    font-size: 14px;
+    color: #8e8e8e;
+  }
+  .ig-input-bar .send-icons {
+    display: flex; gap: 12px; color: #fff; font-size: 18px;
+  }
+
+  .powered-by {
+    text-align: center;
+    padding: 8px;
+    font-size: 11px;
+    color: #444;
+  }
+  .powered-by a { color: #6366f1; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="badge">📸 INSTAGRAM DM DEMO</div>
+  <h1>Turn Instagram DMs Into Booked Appointments</h1>
+  <p>Watch how MedSpa Concierge instantly responds to Instagram inquiries, qualifies leads, and books them — all while you sleep.</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="value">&lt;30s</div><div class="label">DM Response</div></div>
+  <div class="stat"><div class="value">24/7</div><div class="label">Always On</div></div>
+  <div class="stat"><div class="value">3x</div><div class="label">More Bookings</div></div>
+</div>
+
+<div class="phone-frame">
+  <div class="phone-notch"><div class="island"></div></div>
+  <div class="ig-header">
+    <span class="ig-back">‹</span>
+    <div class="ig-avatar">
+      <div class="ig-avatar-inner">G</div>
+    </div>
+    <div class="ig-header-info">
+      <div class="ig-header-name">glowAesthetics ✓</div>
+      <div class="ig-header-status">Active now</div>
+    </div>
+    <div class="ig-header-actions">
+      <span>📞</span>
+      <span>ⓘ</span>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="fill" id="progress" style="width: 0%"></div></div>
+  <div class="step-label" id="stepLabel"></div>
+  <div class="chat-area" id="chat"></div>
+  <div class="ig-input-bar">
+    <div class="camera-icon">📷</div>
+    <div class="input-placeholder">Message...</div>
+    <div class="send-icons"><span>🎤</span><span>🖼</span></div>
+  </div>
+  <div class="controls">
+    <button class="btn-reset" onclick="resetDemo()">↺ Reset</button>
+    <button class="btn-next" id="nextBtn" onclick="nextStep()">Start Demo →</button>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Never lose another Instagram lead.</h2>
+  <p class="subtitle">MedSpa Concierge responds in seconds, 24/7 — so every DM becomes a booked appointment.</p>
+  <a href="https://aiwolfsolutions.com" target="_blank">Get MedSpa Concierge →</a>
+  <p class="pricing">Starting at $997/mo · No setup fee for founding clients</p>
+</div>
+
+<div class="powered-by">Powered by <a href="https://aiwolfsolutions.com" target="_blank">AI Wolf Solutions</a></div>
+
+<script>
+const STEPS = [
+  {
+    label: "📩 Patient DMs about a service",
+    messages: [
+      { type: 'timestamp', text: 'Today 8:47 PM' },
+      { type: 'outgoing', text: "Hi! How much is Botox? I saw your post about the spring special 💉", delay: 400 },
+    ]
+  },
+  {
+    label: "⚡ AI responds instantly with info",
+    messages: [
+      { type: 'incoming', text: "Hey there! 😊 Thanks for reaching out! We'd love to help you with Botox.\n\nOur spring special is $11/unit (reg. $14/unit) — most patients need 20-40 units depending on the treatment area.\n\nWould you like to book a free consultation to get an exact quote?", delay: 1400 },
+    ]
+  },
+  {
+    label: "💬 Patient is interested",
+    messages: [
+      { type: 'outgoing', text: "Oh wow that's a great deal! Yes I'd love to book. Do you have anything this week?", delay: 400 },
+    ]
+  },
+  {
+    label: "🎯 AI qualifies — collects name",
+    messages: [
+      { type: 'incoming', text: "Absolutely! We have availability this week. 🙌\n\nJust a couple quick questions so I can get you set up — what's your name?", delay: 1200 },
+      { type: 'outgoing', text: "Jessica Martinez", delay: 2200 },
+    ]
+  },
+  {
+    label: "🎯 AI qualifies — new or returning",
+    messages: [
+      { type: 'incoming', text: "Nice to meet you, Jessica! Have you been to Glow Aesthetics before, or would this be your first visit?", delay: 1200 },
+      { type: 'outgoing', text: "First time! My friend Sarah recommended you guys", delay: 2200 },
+    ]
+  },
+  {
+    label: "🎯 AI qualifies — schedule & provider",
+    messages: [
+      { type: 'incoming', text: "We love referrals! 🤍 Sarah is amazing.\n\nWhat days/times work best for you? And do you have a provider preference, or would you like our next available?", delay: 1200 },
+      { type: 'outgoing', text: "Anytime after 4pm on weekdays. No preference on provider!", delay: 2200 },
+    ]
+  },
+  {
+    label: "📅 AI offers real-time availability",
+    messages: [
+      { type: 'incoming', text: "Perfect! Here's what I have for Botox consultations this week after 4pm:\n\n1️⃣ Wednesday, Mar 11 at 4:30 PM — Dr. Emily Chen\n2️⃣ Thursday, Mar 12 at 5:00 PM — Nurse Amy K.\n3️⃣ Friday, Mar 13 at 4:00 PM — Dr. Emily Chen\n\nWhich works best for you?", delay: 1400 },
+      { type: 'outgoing', text: "Thursday at 5 sounds perfect!", delay: 2400 },
+    ]
+  },
+  {
+    label: "✅ AI confirms the booking",
+    messages: [
+      { type: 'timestamp', text: '8:52 PM' },
+      { type: 'incoming', text: "You're all set, Jessica! 🎉\n\n📅 Botox Consultation\n📆 Thursday, Mar 12 at 5:00 PM\n👩‍⚕️ Nurse Amy K.\n📍 Glow Aesthetics — 421 Maple Ave, Suite 200\n\nI'll send you a confirmation & intake forms shortly. See you Thursday! ✨", delay: 1500 },
+      { type: 'outgoing', text: "Amazing, thank you so much!! 🙏", delay: 2800 },
+      { type: 'incoming', text: "You're welcome! If you have any questions before your visit, just DM us anytime. We're here 24/7 💜", delay: 4000 },
+    ]
+  },
+  {
+    label: "📊 Result: Lead captured in under 5 minutes",
+    messages: [
+      { type: 'system', text: '✅ New patient booked. Zero staff time. 5 minutes from DM to done.' },
+    ]
+  },
+];
+
+let currentStep = -1;
+const chat = document.getElementById('chat');
+const nextBtn = document.getElementById('nextBtn');
+const progressEl = document.getElementById('progress');
+const stepLabel = document.getElementById('stepLabel');
+
+function nextStep() {
+  currentStep++;
+  if (currentStep >= STEPS.length) {
+    nextBtn.disabled = true;
+    nextBtn.textContent = 'Demo Complete ✓';
+    return;
+  }
+
+  const step = STEPS[currentStep];
+  stepLabel.textContent = step.label;
+  progressEl.style.width = ((currentStep + 1) / STEPS.length * 100) + '%';
+
+  nextBtn.disabled = true;
+  nextBtn.textContent = 'Playing...';
+
+  let cumulative = 0;
+  step.messages.forEach((msg, i) => {
+    const delay = msg.delay || 300;
+    cumulative += delay;
+    const typingTime = (msg.type === 'incoming') ? 900 : 0;
+    const fireAt = cumulative;
+
+    setTimeout(() => {
+      if (msg.type === 'timestamp') {
+        addTimestamp(msg.text);
+        if (i === step.messages.length - 1) enableNext();
+      } else if (msg.type === 'incoming') {
+        showTyping();
+        setTimeout(() => {
+          hideTyping();
+          addMessage(msg);
+          if (i === step.messages.length - 1) enableNext();
+        }, typingTime);
+      } else {
+        addMessage(msg);
+        if (i === step.messages.length - 1) enableNext();
+      }
+    }, fireAt);
+
+    cumulative += typingTime;
+  });
+}
+
+function enableNext() {
+  setTimeout(() => {
+    if (currentStep < STEPS.length - 1) {
+      nextBtn.disabled = false;
+      nextBtn.textContent = 'Next →';
+    } else {
+      nextBtn.disabled = true;
+      nextBtn.textContent = 'Demo Complete ✓';
+    }
+  }, 400);
+}
+
+function addTimestamp(text) {
+  const el = document.createElement('div');
+  el.className = 'timestamp';
+  el.textContent = text;
+  chat.appendChild(el);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function addMessage(msg) {
+  if (msg.type === 'system') {
+    const el = document.createElement('div');
+    el.className = 'msg system';
+    el.textContent = msg.text;
+    chat.appendChild(el);
+    chat.scrollTop = chat.scrollHeight;
+    return;
+  }
+
+  const row = document.createElement('div');
+  row.className = 'msg-row ' + msg.type;
+
+  if (msg.type === 'incoming') {
+    const av = document.createElement('div');
+    av.className = 'msg-avatar';
+    av.textContent = 'G';
+    row.appendChild(av);
+  }
+
+  const bubble = document.createElement('div');
+  bubble.className = 'msg ' + msg.type;
+  bubble.textContent = msg.text;
+  row.appendChild(bubble);
+
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function showTyping() {
+  const row = document.createElement('div');
+  row.className = 'typing-row';
+  row.id = 'typingIndicator';
+
+  const av = document.createElement('div');
+  av.className = 'msg-avatar';
+  av.textContent = 'G';
+  row.appendChild(av);
+
+  const t = document.createElement('div');
+  t.className = 'typing';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  row.appendChild(t);
+
+  chat.appendChild(row);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function hideTyping() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+function resetDemo() {
+  currentStep = -1;
+  chat.innerHTML = '';
+  nextBtn.disabled = false;
+  nextBtn.textContent = 'Start Demo →';
+  progressEl.style.width = '0%';
+  stepLabel.textContent = '';
+}
+</script>
+</body>
+</html>

@@ -62,9 +62,9 @@ a:focus {
   position: relative;
   overflow: hidden;
   background:
-    radial-gradient(1200px circle at 20% 0%, rgba(139, 92, 246, 0.55), transparent 60%),
-    radial-gradient(900px circle at 85% 45%, rgba(79, 70, 229, 0.55), transparent 55%),
-    linear-gradient(130deg, #0b102a, #312e81 35%, #4f46e5 70%, #8b5cf6);
+    radial-gradient(1200px circle at 20% 0%, rgba(139, 92, 246, 0.18), transparent 60%),
+    radial-gradient(900px circle at 85% 45%, rgba(79, 70, 229, 0.15), transparent 55%),
+    linear-gradient(130deg, #0f0f0f, #1a1a2e 35%, #16213e 70%, #1a1a2e);
   background-size: 240% 240%;
   animation: heroGradient 18s ease-in-out infinite;
   color: #fff;
@@ -250,7 +250,7 @@ a:focus {
 .section--gradient {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(130deg, #1e1b4b, #312e81 40%, #4f46e5 75%, #8b5cf6);
+  background: linear-gradient(130deg, #0f0f0f, #1a1a2e 40%, #16213e 75%, #1a1a2e);
   background-size: 220% 220%;
   animation: heroGradient 16s ease alternate infinite;
   color: #fff;
@@ -568,7 +568,7 @@ a:focus {
 }
 
 .footer {
-  background: #1e1b4b;
+  background: #111111;
   color: #d9dce3;
   padding: 2.5rem 1.5rem;
 }
@@ -595,7 +595,7 @@ a:focus {
 }
 
 .policy-header {
-  background: #1e1b4b;
+  background: #111111;
   color: #eef2ff;
   padding: 3rem 1.5rem 2.5rem;
   text-align: center;
