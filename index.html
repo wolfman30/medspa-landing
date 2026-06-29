@@ -236,7 +236,6 @@ body{margin:0;background:#F4F0E8;color:#16181F;font-family:'Hanken Grotesk',syst
       </div>
       <!-- Plan B highlighted -->
       <div class="pcardB" style="flex:1 1 320px;max-width:440px;background:#0E1220;color:#F4EFE6;border:1px solid #2E6CF6;border-radius:18px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;position:relative;box-shadow:0 28px 60px -28px rgba(46,108,246,.6);transition:transform .25s">
-        <span style="position:absolute;top:-12px;left:clamp(28px,3vw,40px);background:#2E6CF6;color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 12px;border-radius:999px">Most popular</span>
         <h3 style="font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#9DB8FF;margin:0 0 18px;font-weight:600">Text + Voice AI</h3>
         <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:4px"><span style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,5.2vw,60px);line-height:1;color:#F8F4EC;letter-spacing:-.02em">$1,000</span><span style="font-size:15px;color:rgba(244,239,230,.55)">/ month</span></div>
         <p style="font-size:14.5px;color:rgba(244,239,230,.66);margin:0 0 24px">Adds a live AI voice agent that answers the call itself.</p>
@@ -266,7 +265,7 @@ body{margin:0;background:#F4F0E8;color:#16181F;font-family:'Hanken Grotesk',syst
     <div data-reveal="200" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
       <a href="https://aiwolfsolutions.com/demo" class="btnp" style="display:inline-flex;align-items:center;gap:9px;background:#2E6CF6;color:#fff;font-weight:600;font-size:16px;padding:16px 32px;border-radius:11px;text-decoration:none;box-shadow:0 16px 40px -10px rgba(46,108,246,.7);transition:transform .2s,background .2s,box-shadow .2s">Watch the 2-min demo&nbsp;→</a>
     </div>
-    <p data-reveal="260" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(244,239,230,.5);margin:30px 0 0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1879767c6a7d6f5879716f77747e6b77746d6c7177766b367b7775">[email&#160;protected]</a> · (330) 333-2654</p>
+    <p data-reveal="260" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(244,239,230,.5);margin:30px 0 0"><span id="contact-email"></span> · (330) 333-2654</p>
   </div>
 </section>
 
@@ -292,7 +291,7 @@ body{margin:0;background:#F4F0E8;color:#16181F;font-family:'Hanken Grotesk',syst
 
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 (function(){
   var nav = document.getElementById('nav');
   var sms = document.getElementById('sms');
@@ -416,6 +415,18 @@ body{margin:0;background:#F4F0E8;color:#16181F;font-family:'Hanken Grotesk',syst
     return row;
   }
   function scrollBottom(){ if (sms) sms.scrollTop = sms.scrollHeight; }
+
+  /* ---- Contact email (assembled in JS so Cloudflare email-obfuscation leaves it alone) ---- */
+  var em = document.getElementById('contact-email');
+  if (em){
+    var u = 'andrew', d = 'aiwolfsolutions.com', addr = u + '@' + d;
+    var a = document.createElement('a');
+    a.href = 'mailto:' + addr;
+    a.textContent = addr;
+    a.style.color = 'inherit';
+    a.style.textDecoration = 'none';
+    em.appendChild(a);
+  }
 
   if (RM){
     script.forEach(function(m){ thread.appendChild(bubbleEl(m)); });
