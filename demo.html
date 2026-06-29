@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>MedSpa Concierge — Live Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -289,9 +292,430 @@
     padding: 4px 0;
     font-weight: 500;
   }
+
+  :root {
+    --ink: #16181F;
+    --muted: #5C5648;
+    --stone: #F4F0E8;
+    --screen: #F6F4EE;
+    --navy: #0E1220;
+    --navy-deep: #080B12;
+    --blue: #2E6CF6;
+    --blue-dark: #1E55E0;
+    --blue-soft: #E9EFFE;
+    --cream: #F4EFE6;
+    --green: #34d399;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Hanken Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--stone);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(52, 211, 153, .5); }
+    50% { box-shadow: 0 0 0 6px rgba(52, 211, 153, 0); }
+  }
+
+  .demo-nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px clamp(20px, 5vw, 44px);
+    background: var(--navy);
+    color: var(--cream);
+    border-bottom: 1px solid rgba(244, 239, 230, .1);
+  }
+
+  .demo-brand,
+  .demo-nav-link {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .demo-brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+  }
+
+  .demo-brand img {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    object-fit: contain;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .18), 0 4px 12px rgba(8, 11, 20, .25);
+  }
+
+  .demo-brand strong {
+    display: block;
+    color: #EFEBE2;
+    font-size: 14.5px;
+    line-height: 1.1;
+    letter-spacing: .04em;
+  }
+
+  .demo-brand span span {
+    display: block;
+    color: #EFEBE2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: .16em;
+    line-height: 1.25;
+    opacity: .55;
+    text-transform: uppercase;
+  }
+
+  .demo-nav-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(244, 239, 230, .28);
+    border-radius: 11px;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 10px 16px;
+    white-space: nowrap;
+    transition: border-color .2s, background .2s;
+  }
+
+  .demo-nav-link:hover {
+    border-color: #6E9BFF;
+    background: rgba(110, 155, 255, .08);
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    max-width: none;
+    padding: clamp(36px, 6vw, 60px) 20px clamp(22px, 4vw, 34px);
+    background: var(--navy);
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    opacity: .05;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .hero .badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    color: #9DB8FF;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 0;
+    border-radius: 0;
+    margin-bottom: 22px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    animation: riseIn .8s cubic-bezier(.2,.7,.2,1) both;
+  }
+
+  .hero .badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: livePulse 2.4s ease-in-out infinite;
+  }
+
+  .hero h1 {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(38px, 6vw, 60px);
+    line-height: 1.04;
+    letter-spacing: -.015em;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #F8F4EC;
+    background: none;
+    -webkit-text-fill-color: currentColor;
+    animation: riseIn .9s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: .1s;
+  }
+
+  .hero p {
+    color: rgba(244, 239, 230, .74);
+    font-size: clamp(15.5px, 1.45vw, 18px);
+    line-height: 1.62;
+    max-width: 52ch;
+    margin: 0 auto;
+    animation: riseIn .9s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: .22s;
+  }
+
+  .stats {
+    max-width: 680px;
+    gap: 20px;
+    padding: 18px 20px 6px;
+    animation: riseIn .9s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: .38s;
+  }
+
+  .stat {
+    min-width: 132px;
+  }
+
+  .stat .value {
+    font-family: 'Newsreader', serif;
+    font-size: 28px;
+    line-height: 1;
+    color: var(--blue);
+  }
+
+  .stat .label {
+    color: var(--muted);
+    margin-top: 6px;
+    font-weight: 600;
+  }
+
+  .phone-frame {
+    width: 390px;
+    background: linear-gradient(160deg, #171C2E, #0C1019);
+    border: 1px solid rgba(255, 255, 255, .09);
+    border-radius: 38px;
+    padding: 13px;
+    margin: 12px auto 22px;
+    box-shadow: 0 42px 90px -34px rgba(6, 9, 17, .65), inset 0 1px 0 rgba(255, 255, 255, .05);
+    animation: riseIn .9s cubic-bezier(.2,.7,.2,1) both;
+    animation-delay: .3s;
+  }
+
+  .phone-notch {
+    height: 42px;
+    background: #0C1019;
+    border-radius: 27px 27px 0 0;
+  }
+
+  .phone-notch .island {
+    background: #05070C;
+  }
+
+  .sms-header {
+    background: #fff;
+    color: var(--ink);
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(20, 22, 28, .07);
+  }
+
+  .sms-header .avatar {
+    width: 34px;
+    height: 34px;
+    background: var(--navy);
+    color: var(--cream);
+    box-shadow: 0 0 0 1px rgba(20, 22, 28, .06);
+  }
+
+  .sms-header .name {
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  .sms-header .number {
+    color: #8A8474;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .04em;
+  }
+
+  .progress-bar {
+    background: #E2DED3;
+  }
+
+  .progress-bar .fill {
+    background: var(--blue);
+  }
+
+  .step-label {
+    color: var(--muted);
+    background: var(--screen);
+    padding: 8px 10px 2px;
+    font-weight: 600;
+  }
+
+  .chat-area {
+    background: var(--screen);
+    height: clamp(260px, 42vh, 460px);
+  }
+
+  .msg {
+    padding: 11px 14px;
+    font-size: 14.5px;
+    line-height: 1.5;
+  }
+
+  .msg.incoming {
+    background: #ECEAE1;
+    color: #1B1E26;
+    box-shadow: 0 1px 2px rgba(20, 22, 28, .07);
+  }
+
+  .msg.outgoing {
+    background: var(--blue);
+    box-shadow: 0 6px 16px -4px rgba(46, 108, 246, .45);
+  }
+
+  .msg.system {
+    background: var(--blue-soft);
+    color: var(--blue-dark);
+    border: 1px solid rgba(46, 108, 246, .2);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .02em;
+  }
+
+  .typing {
+    background: #ECEAE1;
+  }
+
+  .typing span {
+    background: #A39C8B;
+  }
+
+  .payment-link {
+    background: var(--blue);
+    box-shadow: 0 12px 24px -10px rgba(46, 108, 246, .7);
+    transition: background .2s, transform .2s;
+  }
+
+  .payment-link:hover {
+    background: var(--blue-dark);
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .controls {
+    padding: 12px 16px 16px;
+    background: #fff;
+    border-top: 1px solid rgba(20, 22, 28, .07);
+    border-radius: 0 0 27px 27px;
+  }
+
+  .controls button {
+    border-radius: 11px;
+    transition: background .2s, transform .2s, color .2s;
+  }
+
+  .btn-next {
+    background: var(--blue);
+  }
+
+  .btn-next:hover {
+    background: var(--blue-dark);
+    transform: translateY(-1px);
+  }
+
+  .btn-next:disabled {
+    background: #E2DED3;
+    color: #8A8474;
+  }
+
+  .btn-reset {
+    background: #F1EEE6;
+    color: var(--muted);
+  }
+
+  .btn-reset:hover {
+    background: #E8E3D7;
+  }
+
+  .cta {
+    padding: 10px 20px 44px;
+  }
+
+  .cta a {
+    background: var(--navy);
+    border-radius: 11px;
+    transition: transform .2s, background .2s;
+  }
+
+  .cta a:hover {
+    background: var(--blue);
+    transform: translateY(-1px);
+  }
+
+  .cta p {
+    color: var(--muted);
+  }
+
+  @media (max-width: 560px) {
+    .demo-nav {
+      align-items: flex-start;
+      flex-direction: column;
+      padding: 16px 20px;
+    }
+
+    .demo-nav-link {
+      width: 100%;
+    }
+
+    .stat {
+      min-width: 94px;
+    }
+
+    .phone-frame {
+      padding: 9px;
+      border-radius: 30px;
+    }
+
+    .phone-notch {
+      border-radius: 21px 21px 0 0;
+    }
+
+    .controls {
+      border-radius: 0 0 21px 21px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: .001ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+    }
+  }
 </style>
 </head>
 <body>
+
+<nav class="demo-nav">
+  <a class="demo-brand" href="https://aiwolfsolutions.com">
+    <img src="logo-wolf.jpg" alt="AI Wolf Solutions">
+    <span>
+      <strong>MEDSPA CONCIERGE</strong>
+      <span>by AI Wolf Solutions</span>
+    </span>
+  </a>
+  <a class="demo-nav-link" href="https://aiwolfsolutions.com">Back to site</a>
+</nav>
 
 <div class="hero">
   <div class="badge">LIVE DEMO</div>
