@@ -4,317 +4,446 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MedSpa Concierge — 24/7 AI Receptionist for Med Spas | AI Wolf Solutions</title>
-<meta name="description" content="Never lose a patient to a missed call again. MedSpa Concierge texts back instantly, qualifies leads, and books appointments — all via SMS, 24/7.">
+<meta name="description" content="Never lose a patient to a missed call. MedSpa Concierge texts callers back in seconds, qualifies them, and books the appointment with a deposit — 24/7, built for med spas.">
+<link rel="icon" type="image/jpeg" href="logo-wolf.jpg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MedSpa Concierge — 24/7 AI Receptionist for Med Spas">
+<meta property="og:description" content="Texts missed callers back in seconds, qualifies them, and books the appointment with a deposit. Built for med spas.">
+<meta property="og:image" content="logo-wolf.jpg">
+<meta name="theme-color" content="#0E1220">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Hanken+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1e293b;--navy-light:#334155;--gold:#7c3aed;--gold-light:#a78bfa;--white:#ffffff;--gray-50:#f8f9fa;--gray-100:#f0f0f0;--gray-400:#999;--gray-600:#666;--text:#2c2c2c;--radius:12px}
+*{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,sans-serif;color:var(--text);line-height:1.6;overflow-x:hidden}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;width:100%;background:rgba(26,26,46,.95);backdrop-filter:blur(10px);z-index:100;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center}
-nav .logo{color:var(--gold);font-weight:700;font-size:1.1rem;letter-spacing:.5px;display:flex;align-items:center;gap:.5rem}
-nav .logo img{height:32px;width:32px;border-radius:50%}
-nav .logo span{color:var(--white)}
-nav a.cta-sm{background:var(--gold);color:var(--white);padding:.5rem 1.25rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;transition:background .2s}
-nav a.cta-sm:hover{background:var(--gold-light)}
-
-/* ── HERO ── */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:var(--white);padding:8rem 2rem 5rem;text-align:center;position:relative;overflow:hidden}
-.hero::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:40px;background:var(--white);clip-path:ellipse(55% 100% at 50% 100%)}
-.hero-logo{width:80px;height:80px;border-radius:50%;margin:0 auto 1.5rem;box-shadow:0 8px 30px rgba(124,58,237,.3);border:2px solid rgba(124,58,237,.3)}
-.hero h1{font-size:clamp(2rem,5vw,3.5rem);font-weight:800;max-width:800px;margin:0 auto 1.25rem;line-height:1.15}
-.hero h1 .gold{color:var(--gold)}
-.hero p.sub{font-size:clamp(1rem,2.5vw,1.25rem);opacity:.85;max-width:600px;margin:0 auto 2.5rem;line-height:1.5}
-.hero .cta-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
-.btn-primary{display:inline-block;background:var(--gold);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:transform .2s,box-shadow .2s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,58,237,.4)}
-.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.3);color:var(--white);padding:1rem 2.5rem;border-radius:10px;font-size:1.1rem;font-weight:600;text-decoration:none;transition:border-color .2s}
-.btn-outline:hover{border-color:var(--gold)}
-.hero .trust{margin-top:2.5rem;margin-bottom:3rem;font-size:.85rem;opacity:.5;position:relative;z-index:1}
-
-/* ── SECTIONS ── */
-section{padding:5rem 2rem}
-.container{max-width:1100px;margin:0 auto}
-.section-label{text-transform:uppercase;font-size:.8rem;font-weight:700;letter-spacing:2px;color:var(--gold);margin-bottom:.5rem}
-.section-title{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;color:var(--navy);margin-bottom:1rem}
-.section-sub{color:var(--gray-600);max-width:600px;font-size:1.05rem;margin-bottom:3rem}
-
-/* ── PROBLEM ── */
-.problem{background:var(--gray-50)}
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-.problem-stats{display:flex;flex-direction:column;gap:1.5rem}
-.stat-card{background:var(--white);border-radius:var(--radius);padding:1.5rem;box-shadow:0 2px 20px rgba(0,0,0,.06)}
-.stat-card .num{font-size:2.2rem;font-weight:800;color:var(--navy)}
-.stat-card .num span{color:var(--gold)}
-.stat-card p{color:var(--gray-600);font-size:.95rem;margin-top:.25rem}
-
-/* ── SMS MOCK ── */
-.sms-phone{background:var(--navy);border-radius:28px;padding:1.5rem;max-width:340px;margin:0 auto;box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.sms-header{text-align:center;color:var(--white);font-size:.8rem;opacity:.6;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid rgba(255,255,255,.1)}
-.sms-header strong{display:block;font-size:1rem;opacity:1;margin-top:.25rem}
-.bubble{max-width:85%;padding:.75rem 1rem;border-radius:16px;margin-bottom:.6rem;font-size:.9rem;line-height:1.4;clear:both;animation:fadeUp .4s ease both}
-.bubble.ai{background:var(--gold);color:var(--white);float:left;border-bottom-left-radius:4px}
-.bubble.patient{background:#3a3a5c;color:var(--white);float:right;border-bottom-right-radius:4px;text-align:right}
-.bubble::after{content:'';display:table;clear:both}
-.sms-convo::after{content:'';display:table;clear:both}
-.bubble-time{font-size:.7rem;opacity:.5;margin-top:.2rem}
-@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-.bubble:nth-child(2){animation-delay:.1s}
-.bubble:nth-child(3){animation-delay:.2s}
-.bubble:nth-child(4){animation-delay:.3s}
-.bubble:nth-child(5){animation-delay:.4s}
-.bubble:nth-child(6){animation-delay:.5s}
-.bubble:nth-child(7){animation-delay:.6s}
-.bubble:nth-child(8){animation-delay:.7s}
-
-/* ── HOW IT WORKS ── */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;counter-reset:step}
-.step{text-align:center;padding:2rem 1.5rem;border-radius:var(--radius);background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.05);position:relative}
-.step::before{counter-increment:step;content:counter(step);display:flex;align-items:center;justify-content:center;width:48px;height:48px;background:var(--navy);color:var(--gold);font-weight:800;font-size:1.2rem;border-radius:50%;margin:0 auto 1.25rem}
-.step h3{font-size:1.1rem;color:var(--navy);margin-bottom:.5rem}
-.step p{color:var(--gray-600);font-size:.95rem}
-
-/* ── FEATURES ── */
-.features{background:var(--gray-50)}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.feat{display:flex;gap:1rem;padding:1.5rem;background:var(--white);border-radius:var(--radius);box-shadow:0 2px 15px rgba(0,0,0,.04)}
-.feat-icon{width:44px;height:44px;min-width:44px;background:linear-gradient(135deg,var(--navy),var(--navy-light));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem}
-.feat h4{font-size:1rem;color:var(--navy);margin-bottom:.25rem}
-.feat p{font-size:.9rem;color:var(--gray-600)}
-
-/* ── PRICING ── */
-.pricing-card{max-width:500px;margin:0 auto;background:var(--white);border:2px solid var(--gold);border-radius:20px;padding:3rem;text-align:center;position:relative;box-shadow:0 10px 40px rgba(0,0,0,.08)}
-.pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--white);font-weight:700;font-size:.8rem;padding:.4rem 1.25rem;border-radius:20px;white-space:nowrap}
-.pricing-card .price{font-size:3.5rem;font-weight:800;color:var(--navy);margin:1rem 0 .25rem}
-.pricing-card .price sup{font-size:1.5rem;vertical-align:super}
-.pricing-card .per{color:var(--gray-600);margin-bottom:1.5rem}
-.pricing-card ul{list-style:none;text-align:left;margin-bottom:2rem}
-.pricing-card li{padding:.5rem 0;border-bottom:1px solid var(--gray-100);font-size:.95rem;color:var(--gray-600)}
-.pricing-card li::before{content:'✓';color:var(--gold);font-weight:700;margin-right:.75rem}
-.pricing-card .setup{background:var(--navy);color:var(--white);padding:.75rem 1.5rem;border-radius:10px;display:inline-block;margin-bottom:1.5rem;font-size:.9rem}
-.pricing-card .setup s{opacity:.6}
-.pricing-card .setup strong{color:var(--gold)}
-
-/* ── CTA ── */
-.final-cta{background:linear-gradient(135deg,var(--navy),var(--navy-light));color:var(--white);text-align:center;padding:5rem 2rem}
-.final-cta h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:1rem}
-.final-cta p{opacity:.8;max-width:550px;margin:0 auto 2rem;font-size:1.1rem}
-
-/* ── FOOTER ── */
-footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:2rem;font-size:.85rem}
-footer a{color:var(--gold);text-decoration:none}
-
-/* ── RESPONSIVE ── */
-@media(max-width:768px){
-  .problem-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr;max-width:400px;margin:0 auto}
-  .feat-grid{grid-template-columns:1fr}
-  section{padding:3.5rem 1.5rem}
-  .hero{padding:7rem 1.5rem 4rem}
-}
+body{margin:0;background:#F4F0E8;color:#16181F;font-family:'Hanken Grotesk',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:#2E6CF6;color:#fff}
+@keyframes riseIn{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes bubbleIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes dotPulse{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+@keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(52,211,153,.5)}50%{box-shadow:0 0 0 6px rgba(52,211,153,0)}}
+.grain::before{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");opacity:.05;mix-blend-mode:overlay;pointer-events:none}
+.nlink:hover{opacity:.6}
+.btnblue:hover{background:#1E55E0;transform:translateY(-1px)}
+.btnp:hover{transform:translateY(-2px);background:#1E55E0;box-shadow:0 22px 50px -10px rgba(46,108,246,.8)}
+.btng:hover{border-color:#6E9BFF;background:rgba(110,155,255,.08)}
+.btnoutline:hover{border-color:#2E6CF6;background:#fff}
+.pcardA:hover{transform:translateY(-4px);box-shadow:0 24px 50px -24px rgba(22,24,31,.28)}
+.pcardB:hover{transform:translateY(-4px)}
+.flink:hover{color:#fff}
+@media (prefers-reduced-motion: reduce){*{animation-duration:.001ms !important;animation-iteration-count:1 !important}}
 </style>
 </head>
 <body>
+<div style="position:relative;width:100%;overflow-x:clip;background:#F4F0E8">
 
-<!-- NAV -->
-<nav>
-  <div class="logo"><img src="logo-wolf.jpg" alt="AI Wolf Solutions">MedSpa <span>Concierge</span></div>
-  <a href="https://aiwolfsolutions.com/demo" class="cta-sm">See Demo</a>
+<!-- ================= NAV ================= -->
+<nav id="nav" style="position:fixed;top:0;left:0;width:100%;z-index:50;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:clamp(14px,2vw,20px) clamp(20px,5vw,44px);border-bottom:1px solid transparent;transition:background .35s ease,box-shadow .35s ease,border-color .35s ease">
+  <a href="#top" style="display:flex;align-items:center;gap:11px;text-decoration:none">
+    <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;overflow:hidden;background:#fff;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.18),0 4px 12px rgba(8,11,20,.25)"><img src="logo-wolf.jpg" alt="AI Wolf Solutions" style="width:100%;height:100%;object-fit:contain"></span>
+    <span style="line-height:1.1">
+      <span data-navtext="1" style="display:block;font-weight:700;font-size:14.5px;letter-spacing:.04em;color:#EFEBE2">MEDSPA CONCIERGE</span>
+      <span data-navtext="1" style="display:block;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#EFEBE2;opacity:.55">by AI Wolf Solutions</span>
+    </span>
+  </a>
+  <div style="display:flex;align-items:center;gap:clamp(14px,2.4vw,28px)">
+    <a href="#how" data-navtext="1" class="nlink" style="text-decoration:none;font-size:14px;font-weight:500;color:#EFEBE2;white-space:nowrap;transition:opacity .2s">How it works</a>
+    <a href="#pricing" data-navtext="1" class="nlink" style="text-decoration:none;font-size:14px;font-weight:500;color:#EFEBE2;white-space:nowrap;transition:opacity .2s">Pricing</a>
+    <a href="https://aiwolfsolutions.com/demo" class="btnblue" style="text-decoration:none;font-size:14px;font-weight:600;color:#fff;background:#2E6CF6;padding:10px 18px;border-radius:9px;white-space:nowrap;box-shadow:0 8px 22px -8px rgba(46,108,246,.6);transition:background .2s,transform .2s">See the demo</a>
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero">
-  <img src="logo-wolf.jpg" alt="AI Wolf Solutions" class="hero-logo">
-  <h1>Every Missed Call Is a <span class="gold">Lost Patient.</span></h1>
-  <p class="sub">MedSpa Concierge texts back instantly, qualifies leads, and books appointments — all via SMS, 24/7. Your competitors are one Google search away. Don't let them win.</p>
-  <div class="cta-row">
-    <a href="https://aiwolfsolutions.com/demo" class="btn-primary">See Demo →</a>
-    <a href="#how" class="btn-outline">See How It Works</a>
-  </div>
-  <p class="trust">Built for med spas · No contracts · Cancel anytime</p>
-</section>
-
-<!-- PROBLEM + SMS MOCK -->
-<section class="problem">
-  <div class="container">
-    <div class="problem-grid">
-      <div>
-        <p class="section-label">The Problem</p>
-        <h2 class="section-title">Your Front Desk Can't Answer Every Call.</h2>
-        <p class="section-sub" style="margin-bottom:2rem">While you're with a patient, your phone rings. By the time you call back, they've already booked with someone else.</p>
-        <div class="problem-stats">
-          <div class="stat-card">
-            <div class="num">Most</div>
-            <p>calls missed during treatments and after-hours go straight to a competitor</p>
-          </div>
-          <div class="stat-card">
-            <div class="num"><span>$</span>1,000s</div>
-            <p>in lifetime value per med spa patient</p>
-          </div>
-          <div class="stat-card">
-            <div class="num">Seconds</div>
-            <p>texts back in seconds, not hours</p>
-          </div>
-        </div>
+<!-- ================= HERO ================= -->
+<header id="top" class="grain" style="position:relative;background:#0E1220;color:#F4EFE6;overflow:hidden;padding:clamp(132px,19vh,196px) clamp(20px,5vw,44px) clamp(72px,10vh,108px)">
+  <div aria-hidden="true" style="position:absolute;top:-10%;right:-6%;width:60%;height:80%;background:radial-gradient(50% 50% at 60% 40%,rgba(46,108,246,.32),rgba(46,108,246,0) 70%);filter:blur(10px);pointer-events:none"></div>
+  <div aria-hidden="true" style="position:absolute;bottom:-30%;left:-10%;width:50%;height:70%;background:radial-gradient(50% 50% at 50% 50%,rgba(46,108,246,.12),rgba(46,108,246,0) 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;gap:clamp(40px,5vw,72px)">
+    <!-- copy -->
+    <div style="flex:1 1 470px;min-width:0">
+      <p style="display:inline-flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9DB8FF;margin:0 0 26px;animation:riseIn .8s cubic-bezier(.2,.7,.2,1) both"><span style="width:7px;height:7px;border-radius:50%;background:#34d399;animation:livePulse 2.4s ease-in-out infinite"></span>24/7 AI receptionist · built for med spas</p>
+      <h1 style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(42px,7.2vw,84px);line-height:1.04;letter-spacing:-.015em;margin:0 0 26px;color:#F8F4EC">
+        <span style="display:block;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.1s">Every missed call</span>
+        <span style="display:block;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.22s">is a <em style="font-style:italic;font-weight:600;color:#93B4FF">lost patient.</em></span>
+      </h1>
+      <p style="font-size:clamp(16px,1.55vw,19.5px);line-height:1.62;color:rgba(244,239,230,.74);max-width:48ch;margin:0 0 34px;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.38s">MedSpa Concierge answers the moment you can't — texting callers back in seconds, qualifying them, and booking the appointment with a deposit. Quietly, automatically, around the clock.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.54s">
+        <a href="https://aiwolfsolutions.com/demo" class="btnp" style="display:inline-flex;align-items:center;gap:9px;background:#2E6CF6;color:#fff;font-weight:600;font-size:15.5px;padding:15px 28px;border-radius:11px;text-decoration:none;box-shadow:0 14px 36px -10px rgba(46,108,246,.7);transition:transform .2s,box-shadow .2s,background .2s">Watch the 2-min demo&nbsp;→</a>
+        <a href="#how" class="btng" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(244,239,230,.28);color:#F4EFE6;font-weight:600;font-size:15.5px;padding:15px 26px;border-radius:11px;text-decoration:none;transition:border-color .2s,background .2s">See how it works</a>
       </div>
-      <div>
-        <div class="sms-phone">
-          <div class="sms-header">Messages<br><strong>MedSpa Concierge</strong></div>
-          <div class="sms-convo">
-            <div class="bubble ai">Hi! Thanks for calling Glow Aesthetics. 😊 We're with a patient right now — how can I help you via text?</div>
-            <div style="clear:both"></div>
-            <div class="bubble patient">Hi! I'm interested in Botox. Do you have anything this week?</div>
-            <div style="clear:both"></div>
-            <div class="bubble ai">Great choice! Are you a new or returning patient?</div>
-            <div style="clear:both"></div>
-            <div class="bubble patient">New patient!</div>
-            <div style="clear:both"></div>
-            <div class="bubble ai">Welcome! 🎉 I have openings Thursday at 2pm or Friday at 10am. Which works better?</div>
-            <div style="clear:both"></div>
-            <div class="bubble patient">Thursday at 2 works!</div>
-            <div style="clear:both"></div>
-            <div class="bubble ai">Perfect! Here's a secure link to confirm with a $50 deposit and you're all set: pay.glowmed.com/book ✨</div>
-            <div style="clear:both"></div>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.04em;color:rgba(244,239,230,.5);margin:30px 0 0;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.66s">No contracts · Cancel anytime · Setup waived for founding clients</p>
+    </div>
+    <!-- phone -->
+    <div style="flex:1 1 380px;min-width:300px;max-width:430px;margin:0 auto;position:relative;animation:riseIn 1s cubic-bezier(.2,.7,.2,1) both;animation-delay:.34s">
+      <div aria-hidden="true" style="position:absolute;inset:-14% -10% -6%;background:radial-gradient(58% 46% at 58% 26%,rgba(46,108,246,.5),rgba(46,108,246,0) 70%);filter:blur(26px);z-index:0;pointer-events:none"></div>
+      <div style="position:relative;z-index:1;background:linear-gradient(160deg,#171C2E,#0C1019);border:1px solid rgba(255,255,255,.09);border-radius:38px;padding:13px;box-shadow:0 50px 90px -28px rgba(6,9,17,.85),inset 0 1px 0 rgba(255,255,255,.05);animation:floatY 7s ease-in-out infinite">
+        <div style="background:#F6F4EE;border-radius:27px;overflow:hidden;display:flex;flex-direction:column;height:526px">
+          <!-- phone header -->
+          <div style="display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border-bottom:1px solid rgba(20,22,28,.07)">
+            <span style="display:inline-flex;width:34px;height:34px;border-radius:50%;overflow:hidden;background:#0E1220;flex:none;box-shadow:0 0 0 1px rgba(20,22,28,.06)"><img src="logo-wolf.jpg" alt="" style="width:100%;height:100%;object-fit:contain"></span>
+            <div style="line-height:1.25;min-width:0">
+              <div style="font-weight:700;font-size:14px;color:#16181F">Glow Aesthetics</div>
+              <div style="display:flex;align-items:center;gap:6px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.04em;color:#8A8474"><span style="width:6px;height:6px;border-radius:50%;background:#34d399;flex:none"></span>MedSpa Concierge · online</div>
+            </div>
+          </div>
+          <!-- conversation -->
+          <div id="sms" style="flex:1;overflow-y:auto;padding:18px 16px 6px;background:#F6F4EE">
+            <div style="display:flex;justify-content:center;margin:0 0 18px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:#8A8474;background:#EDE9DF;border:1px solid rgba(20,22,28,.06);padding:5px 12px;border-radius:999px;text-align:center">Missed call · 7:42 PM · texted back in 8s</span>
+            </div>
+            <div id="sms-thread"></div>
+          </div>
+          <!-- faux input -->
+          <div style="display:flex;align-items:center;gap:9px;padding:11px 13px;background:#fff;border-top:1px solid rgba(20,22,28,.07)">
+            <div style="flex:1;font-size:13px;color:#A39C8B;background:#F1EEE6;border-radius:999px;padding:9px 15px">Message Glow Aesthetics…</div>
+            <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:#2E6CF6;color:#fff;font-size:15px;flex:none">↑</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+  <!-- integrations -->
+  <div style="position:relative;z-index:1;max-width:1180px;margin:clamp(48px,7vh,76px) auto 0;display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;animation:riseIn .9s cubic-bezier(.2,.7,.2,1) both;animation-delay:.8s">
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,239,230,.42)">Works with</span>
+    <span style="font-weight:600;font-size:15px;color:rgba(244,239,230,.82)">Moxie</span>
+    <span style="width:4px;height:4px;border-radius:50%;background:rgba(244,239,230,.25)"></span>
+    <span style="font-weight:600;font-size:15px;color:rgba(244,239,230,.82)">Stripe</span>
+    <span style="width:4px;height:4px;border-radius:50%;background:rgba(244,239,230,.25)"></span>
+    <span style="font-weight:600;font-size:15px;color:rgba(244,239,230,.82)">Telnyx</span>
+    <span style="width:4px;height:4px;border-radius:50%;background:rgba(244,239,230,.25)"></span>
+    <span style="font-weight:600;font-size:15px;color:rgba(244,239,230,.82)">Claude AI</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.08em;color:rgba(244,239,230,.4)">Boulevard — soon</span>
+  </div>
+</header>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="container">
-    <p class="section-label">How It Works</p>
-    <h2 class="section-title">Three Steps. Zero Effort.</h2>
-    <p class="section-sub">Set it up once, then let MedSpa Concierge handle the rest.</p>
-    <div class="steps">
-      <div class="step">
-        <h3>Patient Calls, You're Busy</h3>
-        <p>A missed call triggers an instant, personalized text message to the caller within seconds.</p>
+<!-- ================= STAKES ================= -->
+<section style="padding:clamp(76px,11vw,132px) clamp(20px,5vw,44px);background:#F4F0E8">
+  <div style="max-width:1180px;margin:0 auto">
+    <p data-reveal="0" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#2E6CF6;margin:0 0 18px;font-weight:600">The cost of silence</p>
+    <h2 data-reveal="70" style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.04;letter-spacing:-.01em;color:#16181F;margin:0 0 20px;max-width:18ch;text-wrap:balance">Your front desk can't catch every call.</h2>
+    <p data-reveal="140" style="font-size:clamp(16px,1.5vw,19px);line-height:1.62;color:#5C5648;max-width:56ch;margin:0 0 clamp(48px,6vw,72px)">While you're with a patient — or after you've closed — the phone keeps ringing. Patients don't leave voicemails anymore. They book the first clinic that texts back.</p>
+    <div data-reveal="200" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:rgba(22,24,31,.12);border:1px solid rgba(22,24,31,.12);border-radius:14px;overflow:hidden">
+      <div style="background:#FBF9F3;padding:clamp(28px,3.4vw,42px)">
+        <div style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(48px,6vw,76px);line-height:1;color:#16181F;letter-spacing:-.02em"><span data-count="67" data-suf="%">0%</span></div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#5C5648">of after-hours calls to independent clinics go unanswered.</p>
       </div>
-      <div class="step">
-        <h3>AI Qualifies & Finds Times</h3>
-        <p>The AI asks their name, desired service, and whether they're new — then pulls real-time availability from your calendar.</p>
+      <div style="background:#FBF9F3;padding:clamp(28px,3.4vw,42px)">
+        <div style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(48px,6vw,76px);line-height:1;color:#16181F;letter-spacing:-.02em"><span data-count="1200" data-pre="~$">$0</span></div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#5C5648">in revenue lost on a single missed new-patient call.</p>
       </div>
-      <div class="step">
-        <h3>Booked & Paid Automatically</h3>
-        <p>Patient picks a time, pays a deposit via secure Stripe checkout, and gets confirmed — no staff needed.</p>
+      <div style="background:#FBF9F3;padding:clamp(28px,3.4vw,42px)">
+        <div style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(48px,6vw,76px);line-height:1;color:#2E6CF6;letter-spacing:-.02em"><span data-count="8" data-suf="s">0s</span></div>
+        <p style="margin:14px 0 0;font-size:15px;line-height:1.55;color:#5C5648">average time MedSpa Concierge takes to text a caller back.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <div class="container">
-    <p class="section-label">Features</p>
-    <h2 class="section-title">Everything You Need. Nothing You Don't.</h2>
-    <p class="section-sub">Built specifically for med spas and aesthetic clinics.</p>
-    <div class="feat-grid">
-      <div class="feat">
-        <div class="feat-icon">⚡</div>
-        <div>
-          <h4>Instant Missed-Call Text-Back</h4>
-          <p>24/7 or after-hours only — you choose. Patients hear back in seconds, not hours.</p>
-        </div>
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" style="padding:clamp(76px,11vw,132px) clamp(20px,5vw,44px);background:#EBE5D8">
+  <div style="max-width:1180px;margin:0 auto">
+    <p data-reveal="0" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#2E6CF6;margin:0 0 18px;font-weight:600">How it works</p>
+    <h2 data-reveal="70" style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.04;letter-spacing:-.01em;color:#16181F;margin:0 0 clamp(44px,5.5vw,68px);max-width:20ch;text-wrap:balance">Three steps. Zero effort from your team.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(28px,3.4vw,48px)">
+      <div data-reveal="120" style="border-top:1px solid rgba(22,24,31,.18);padding-top:24px">
+        <div style="font-family:'Newsreader',serif;font-weight:500;font-size:46px;line-height:1;color:#2E6CF6;margin-bottom:18px">01</div>
+        <h3 style="font-size:20px;font-weight:700;color:#16181F;margin:0 0 10px;letter-spacing:-.01em">The call goes unanswered</h3>
+        <p style="font-size:15px;line-height:1.6;color:#5C5648;margin:0">You're mid-treatment or it's 9pm. Instead of dead air, the caller instantly receives a warm, on-brand text from your clinic.</p>
       </div>
-      <div class="feat">
-        <div class="feat-icon">🎯</div>
-        <div>
-          <h4>Smart Lead Qualification</h4>
-          <p>AI gathers name, service interest, and patient status before booking — so you know who's coming.</p>
-        </div>
+      <div data-reveal="200" style="border-top:1px solid rgba(22,24,31,.18);padding-top:24px">
+        <div style="font-family:'Newsreader',serif;font-weight:500;font-size:46px;line-height:1;color:#2E6CF6;margin-bottom:18px">02</div>
+        <h3 style="font-size:20px;font-weight:700;color:#16181F;margin:0 0 10px;letter-spacing:-.01em">AI qualifies &amp; offers real times</h3>
+        <p style="font-size:15px;line-height:1.6;color:#5C5648;margin:0">It learns their name, the service they want, and whether they're new — then pulls live openings straight from your calendar.</p>
       </div>
-      <div class="feat">
-        <div class="feat-icon">📅</div>
-        <div>
-          <h4>Real-Time Availability</h4>
-          <p>Syncs with your booking system to offer only open slots. Helps prevent double-bookings.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">💳</div>
-        <div>
-          <h4>Secure Deposit Collection</h4>
-          <p>Stripe-powered checkout links reduce no-shows and lock in the appointment.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">📊</div>
-        <div>
-          <h4>Admin Portal</h4>
-          <p>See every conversation, track conversions, and manage your AI receptionist from one dashboard.</p>
-        </div>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🔌</div>
-        <div>
-          <h4>Works with Moxie</h4>
-          <p>Books directly into Moxie — more platforms coming soon. Your workflow, enhanced.</p>
-        </div>
+      <div data-reveal="280" style="border-top:1px solid rgba(22,24,31,.18);padding-top:24px">
+        <div style="font-family:'Newsreader',serif;font-weight:500;font-size:46px;line-height:1;color:#2E6CF6;margin-bottom:18px">03</div>
+        <h3 style="font-size:20px;font-weight:700;color:#16181F;margin:0 0 10px;letter-spacing:-.01em">Booked, deposited, synced</h3>
+        <p style="font-size:15px;line-height:1.6;color:#5C5648;margin:0">The patient picks a time and pays a deposit through Stripe. The appointment lands in Moxie. No one on your team lifted a finger.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRICING -->
-<section id="pricing">
-  <div class="container" style="text-align:center">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title" style="margin-left:auto;margin-right:auto">Simple. Transparent. Two Plans.</h2>
-    <p class="section-sub" style="margin-left:auto;margin-right:auto">No hidden fees. No per-message charges. No contracts.</p>
-    <div style="display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;max-width:800px;margin:0 auto">
-      <div class="pricing-card" style="flex:1;min-width:300px">
-        <div class="pricing-badge">📱 Text-Back</div>
-        <div class="price"><sup>$</sup>500</div>
-        <div class="per">per month</div>
-        <div class="setup"><s>$1,500 setup fee</s> → <strong>FREE</strong> for first 10 clients</div>
-        <ul>
-          <li>Unlimited SMS conversations</li>
-          <li>24/7 AI receptionist</li>
-          <li>Real-time booking integration</li>
-          <li>Stripe deposit collection</li>
-          <li>Admin dashboard access</li>
-          <li>Dedicated onboarding support</li>
-          <li>Cancel anytime — no contracts</li>
+<!-- ================= FEATURES ================= -->
+<section style="padding:clamp(76px,11vw,132px) clamp(20px,5vw,44px);background:#F4F0E8">
+  <div style="max-width:1180px;margin:0 auto">
+    <p data-reveal="0" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#2E6CF6;margin:0 0 18px;font-weight:600">Everything it handles</p>
+    <h2 data-reveal="70" style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.04;letter-spacing:-.01em;color:#16181F;margin:0 0 clamp(44px,5.5vw,68px);max-width:20ch;text-wrap:balance">Built for med spas — not bolted on.</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0">
+      <div data-reveal="100" style="border-top:1px solid rgba(22,24,31,.14);padding:26px clamp(18px,2vw,32px) 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">01</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Instant missed-call text-back</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">24/7 or after-hours only — you choose when it speaks for you. Patients hear back in seconds, not hours.</p>
+      </div>
+      <div data-reveal="160" style="border-top:1px solid rgba(22,24,31,.14);padding:26px clamp(18px,2vw,32px) 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">02</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Smart lead qualification</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">Captures name, service interest, and patient status before booking — so you know exactly who's walking in.</p>
+      </div>
+      <div data-reveal="220" style="border-top:1px solid rgba(22,24,31,.14);padding:26px 0 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">03</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Real-time availability</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">Offers only open slots from your live calendar — helping prevent the double-bookings that frustrate patients.</p>
+      </div>
+      <div data-reveal="100" style="border-top:1px solid rgba(22,24,31,.14);padding:26px clamp(18px,2vw,32px) 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">04</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Secure deposit collection</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">Stripe-powered checkout links lock in the appointment and quietly cut your no-show rate.</p>
+      </div>
+      <div data-reveal="160" style="border-top:1px solid rgba(22,24,31,.14);padding:26px clamp(18px,2vw,32px) 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">05</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Owner's dashboard</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">Every conversation, conversion, and booking in one quiet view — so you can see what the AI booked overnight.</p>
+      </div>
+      <div data-reveal="220" style="border-top:1px solid rgba(22,24,31,.14);padding:26px 0 28px 0">
+        <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;color:#2E6CF6;margin-bottom:14px">06</div>
+        <h3 style="font-size:18px;font-weight:700;color:#16181F;margin:0 0 9px;letter-spacing:-.005em">Books into Moxie</h3>
+        <p style="font-size:14.5px;line-height:1.6;color:#5C5648;margin:0">Native Moxie sync today, Boulevard next. It fits the stack you already run — nothing to rip out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section id="pricing" style="padding:clamp(76px,11vw,132px) clamp(20px,5vw,44px);background:#EBE5D8">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="text-align:center;max-width:640px;margin:0 auto clamp(40px,5vw,56px)">
+      <p data-reveal="0" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#2E6CF6;margin:0 0 18px;font-weight:600">Pricing</p>
+      <h2 data-reveal="70" style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(30px,4.6vw,56px);line-height:1.04;letter-spacing:-.01em;color:#16181F;margin:0 0 16px;text-wrap:balance">Simple, transparent, two plans.</h2>
+      <p data-reveal="120" style="font-size:clamp(16px,1.5vw,18px);line-height:1.6;color:#5C5648;margin:0">No per-message fees. No contracts. One booked patient usually covers the month.</p>
+    </div>
+    <div data-reveal="150" style="display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;text-align:center;background:#E9EFFE;border:1px solid rgba(46,108,246,.25);border-radius:12px;padding:14px 22px;max-width:760px;margin:0 auto clamp(28px,3.5vw,40px)">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#1E55E0;font-weight:600">Founding offer</span>
+      <span style="font-size:14.5px;color:#27406E;line-height:1.5">First 10 clinics: <strong style="color:#16181F">$1,500 setup waived</strong> + a 30-day ROI trial.</span>
+    </div>
+    <div data-reveal="180" style="display:flex;flex-wrap:wrap;gap:clamp(20px,2.6vw,28px);justify-content:center;align-items:stretch">
+      <!-- Plan A -->
+      <div class="pcardA" style="flex:1 1 320px;max-width:440px;background:#FBF9F3;border:1px solid rgba(22,24,31,.12);border-radius:18px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s">
+        <h3 style="font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5C5648;margin:0 0 18px;font-weight:600">Text-Back</h3>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:4px"><span style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,5.2vw,60px);line-height:1;color:#16181F;letter-spacing:-.02em">$500</span><span style="font-size:15px;color:#8A8474">/ month</span></div>
+        <p style="font-size:14.5px;color:#5C5648;margin:0 0 24px">For solo &amp; single-provider clinics.</p>
+        <div style="height:1px;background:rgba(22,24,31,.1);margin-bottom:22px"></div>
+        <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:13px;flex:1">
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Unlimited SMS conversations, 24/7</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Smart lead qualification</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Real-time booking into Moxie</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Stripe deposit collection</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Owner's dashboard</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:#3A382F"><span style="color:#2E6CF6;font-weight:700;flex:none">✓</span>Cancel anytime — no contracts</li>
         </ul>
-        <a href="https://aiwolfsolutions.com/demo" class="btn-primary" style="width:100%;text-align:center">Get Started →</a>
+        <a href="https://aiwolfsolutions.com/demo" class="btnoutline" style="text-align:center;background:transparent;color:#16181F;border:1px solid rgba(22,24,31,.28);font-weight:600;font-size:15px;padding:14px;border-radius:11px;text-decoration:none;transition:border-color .2s,background .2s">Start a 30-day trial</a>
       </div>
-      <div class="pricing-card" style="flex:1;min-width:300px;border-color:#6C63FF">
-        <div class="pricing-badge" style="background:#6C63FF">🐺 Text + Voice AI</div>
-        <div class="price"><sup>$</sup>750</div>
-        <div class="per">per month</div>
-        <div class="setup"><s>$1,500 setup fee</s> → <strong>FREE</strong> for first 10 clients</div>
-        <ul>
-          <li><strong>Everything in Text-Back, plus:</strong></li>
-          <li>AI voice agent answers calls live</li>
-          <li>Qualifies patients by phone</li>
-          <li>Books appointments on the call</li>
-          <li>Custom voice & greeting</li>
-          <li>Call recordings & transcripts</li>
-          <li>Priority support</li>
+      <!-- Plan B highlighted -->
+      <div class="pcardB" style="flex:1 1 320px;max-width:440px;background:#0E1220;color:#F4EFE6;border:1px solid #2E6CF6;border-radius:18px;padding:clamp(28px,3vw,40px);display:flex;flex-direction:column;position:relative;box-shadow:0 28px 60px -28px rgba(46,108,246,.6);transition:transform .25s">
+        <span style="position:absolute;top:-12px;left:clamp(28px,3vw,40px);background:#2E6CF6;color:#fff;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 12px;border-radius:999px">Most popular</span>
+        <h3 style="font-size:13px;font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#9DB8FF;margin:0 0 18px;font-weight:600">Text + Voice AI</h3>
+        <div style="display:flex;align-items:baseline;gap:6px;margin-bottom:4px"><span style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(46px,5.2vw,60px);line-height:1;color:#F8F4EC;letter-spacing:-.02em">$1,000</span><span style="font-size:15px;color:rgba(244,239,230,.55)">/ month</span></div>
+        <p style="font-size:14.5px;color:rgba(244,239,230,.66);margin:0 0 24px">Adds a live AI voice agent that answers the call itself.</p>
+        <div style="height:1px;background:rgba(244,239,230,.14);margin-bottom:22px"></div>
+        <ul style="list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:13px;flex:1">
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span><span><strong style="color:#fff">Everything in Text-Back</strong>, plus:</span></li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span>AI voice agent answers calls live</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span>Qualifies &amp; books right on the phone</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span>Custom voice &amp; greeting</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span>Call recordings &amp; transcripts</li>
+          <li style="display:flex;gap:11px;font-size:14.5px;line-height:1.45;color:rgba(244,239,230,.92)"><span style="color:#6E9BFF;font-weight:700;flex:none">✓</span>Priority founding-client support</li>
         </ul>
-        <a href="https://aiwolfsolutions.com/demo" class="btn-primary" style="width:100%;text-align:center;background:#6C63FF">Claim Your Founding Spot →</a>
+        <a href="https://aiwolfsolutions.com/demo" class="btnblue" style="text-align:center;background:#2E6CF6;color:#fff;font-weight:600;font-size:15px;padding:14px;border-radius:11px;text-decoration:none;box-shadow:0 14px 32px -10px rgba(46,108,246,.7);transition:background .2s,transform .2s">Claim a founding spot&nbsp;→</a>
       </div>
     </div>
+    <p data-reveal="120" style="text-align:center;font-size:14px;color:#5C5648;margin:clamp(28px,3.5vw,40px) 0 0">Running 3+ providers or $1M+ in revenue? <a href="https://aiwolfsolutions.com/demo" style="color:#1E55E0;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(30,85,224,.35)">Ask about Omnichannel →</a></p>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="final-cta">
-  <h2>Stop Losing Patients to Missed Calls.</h2>
-  <p>See MedSpa Concierge in action with a free 15-minute demo. No pressure, no contracts — just results.</p>
-  <a href="https://aiwolfsolutions.com/demo" class="btn-primary">See Demo →</a>
+<!-- ================= FINAL CTA ================= -->
+<section class="grain" style="position:relative;background:#0A0D16;color:#F4EFE6;overflow:hidden;padding:clamp(84px,12vw,140px) clamp(20px,5vw,44px);text-align:center">
+  <div aria-hidden="true" style="position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:70%;height:90%;background:radial-gradient(50% 50% at 50% 40%,rgba(46,108,246,.22),rgba(46,108,246,0) 70%);pointer-events:none"></div>
+  <div style="position:relative;z-index:1;max-width:760px;margin:0 auto">
+    <p data-reveal="0" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9DB8FF;margin:0 0 22px;font-weight:600">Stop losing patients</p>
+    <h2 data-reveal="70" style="font-family:'Newsreader',serif;font-weight:600;font-size:clamp(32px,5.4vw,64px);line-height:1.05;letter-spacing:-.015em;color:#F8F4EC;margin:0 0 22px;text-wrap:balance">See it answer a call<br>you'd have missed.</h2>
+    <p data-reveal="140" style="font-size:clamp(16px,1.6vw,19px);line-height:1.6;color:rgba(244,239,230,.72);max-width:48ch;margin:0 auto 36px">A free 15-minute demo — no pressure, no contracts. Just watch it text a patient back and book the appointment.</p>
+    <div data-reveal="200" style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center">
+      <a href="https://aiwolfsolutions.com/demo" class="btnp" style="display:inline-flex;align-items:center;gap:9px;background:#2E6CF6;color:#fff;font-weight:600;font-size:16px;padding:16px 32px;border-radius:11px;text-decoration:none;box-shadow:0 16px 40px -10px rgba(46,108,246,.7);transition:transform .2s,background .2s,box-shadow .2s">Watch the 2-min demo&nbsp;→</a>
+    </div>
+    <p data-reveal="260" style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.04em;color:rgba(244,239,230,.5);margin:30px 0 0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1879767c6a7d6f5879716f77747e6b77746d6c7177766b367b7775">[email&#160;protected]</a> · (330) 333-2654</p>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <img src="logo-wolf.jpg" alt="AI Wolf Solutions" style="width:40px;height:40px;border-radius:50%;margin-bottom:.5rem;opacity:.7">
-  <p>© 2026 <a href="https://aiwolfsolutions.com">AI Wolf Solutions</a>. All rights reserved.</p>
-  <p style="margin-top:.5rem"><a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms & Conditions</a></p>
+<!-- ================= FOOTER ================= -->
+<footer style="background:#080B12;color:rgba(244,239,230,.55);padding:clamp(44px,6vw,64px) clamp(20px,5vw,44px)">
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px">
+    <div style="display:flex;align-items:center;gap:12px">
+      <span style="display:inline-flex;width:40px;height:40px;border-radius:50%;overflow:hidden;background:#fff;flex:none;box-shadow:0 0 0 1px rgba(255,255,255,.1)"><img src="logo-wolf.jpg" alt="AI Wolf Solutions" style="width:100%;height:100%;object-fit:contain"></span>
+      <div style="line-height:1.3">
+        <div style="font-weight:700;font-size:14px;color:#EFEBE2;letter-spacing:.03em">MEDSPA CONCIERGE</div>
+        <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;color:rgba(244,239,230,.45)">© 2026 AI Wolf Solutions LLC · Brunswick, OH</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+      <a href="#how" class="flink" style="color:rgba(244,239,230,.62);text-decoration:none;font-size:13.5px;transition:color .2s">How it works</a>
+      <a href="#pricing" class="flink" style="color:rgba(244,239,230,.62);text-decoration:none;font-size:13.5px;transition:color .2s">Pricing</a>
+      <a href="https://aiwolfsolutions.com/demo" class="flink" style="color:rgba(244,239,230,.62);text-decoration:none;font-size:13.5px;transition:color .2s">Demo</a>
+      <a href="/privacy" class="flink" style="color:rgba(244,239,230,.62);text-decoration:none;font-size:13.5px;transition:color .2s">Privacy</a>
+      <a href="/terms" class="flink" style="color:rgba(244,239,230,.62);text-decoration:none;font-size:13.5px;transition:color .2s">Terms</a>
+    </div>
+  </div>
 </footer>
 
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+(function(){
+  var nav = document.getElementById('nav');
+  var sms = document.getElementById('sms');
+  var thread = document.getElementById('sms-thread');
+  var RM = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---- NAV scroll state ---- */
+  function applyNav(){
+    var scrolled = window.scrollY > 24;
+    if (scrolled){
+      nav.style.background = 'rgba(244,240,232,0.82)';
+      nav.style.backdropFilter = 'saturate(160%) blur(14px)';
+      nav.style.webkitBackdropFilter = 'saturate(160%) blur(14px)';
+      nav.style.borderBottomColor = 'rgba(20,22,28,0.08)';
+      nav.style.boxShadow = '0 1px 26px rgba(20,22,28,0.07)';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.backdropFilter = 'none';
+      nav.style.webkitBackdropFilter = 'none';
+      nav.style.borderBottomColor = 'transparent';
+      nav.style.boxShadow = 'none';
+    }
+    var txt = scrolled ? '#1B1E26' : '#EFEBE2';
+    var labels = document.querySelectorAll('[data-navtext]');
+    for (var i=0;i<labels.length;i++){ labels[i].style.color = txt; }
+  }
+  window.addEventListener('scroll', applyNav, { passive:true });
+  window.addEventListener('resize', applyNav, { passive:true });
+  applyNav();
+
+  /* ---- Scroll reveals ---- */
+  var revEls = [].slice.call(document.querySelectorAll('[data-reveal]'));
+  if (!RM && 'IntersectionObserver' in window){
+    revEls.forEach(function(el){
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1)';
+      el.style.willChange = 'opacity, transform';
+    });
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          var el = e.target;
+          var d = parseInt(el.getAttribute('data-reveal') || '0', 10) || 0;
+          el.style.transitionDelay = d + 'ms';
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -7% 0px' });
+    revEls.forEach(function(el){ io.observe(el); });
+  }
+
+  /* ---- Count-up stats ---- */
+  function runCount(el){
+    var target = parseFloat(el.getAttribute('data-count')) || 0;
+    var pre = el.getAttribute('data-pre') || '';
+    var suf = el.getAttribute('data-suf') || '';
+    function fmt(v){ return pre + Math.round(v).toLocaleString('en-US') + suf; }
+    if (RM){ el.textContent = fmt(target); return; }
+    var dur = 1500, start = performance.now();
+    function ease(t){ return 1 - Math.pow(1 - t, 3); }
+    function tick(now){
+      var t = Math.min(1, (now - start) / dur);
+      el.textContent = fmt(target * ease(t));
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = fmt(target);
+    }
+    requestAnimationFrame(tick);
+  }
+  var countEls = [].slice.call(document.querySelectorAll('[data-count]'));
+  if ('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if (e.isIntersecting){ runCount(e.target); io2.unobserve(e.target); } });
+    }, { threshold: 0.6 });
+    countEls.forEach(function(el){ io2.observe(el); });
+  } else {
+    countEls.forEach(runCount);
+  }
+
+  /* ---- Animated SMS demo ---- */
+  var script = [
+    { from:'ai', text:"Hi! This is Glow Aesthetics \u2014 so sorry we just missed your call. I can help you right here \uD83D\uDC99 What were you hoping to come in for?", time:'7:42 PM' },
+    { from:'me', text:"Hi! I'd love to book Botox this week if you have anything open", time:'7:42 PM' },
+    { from:'ai', text:"Love that. Are you a new or returning patient?", time:'7:42 PM' },
+    { from:'me', text:"New patient!", time:'7:43 PM' },
+    { from:'ai', text:"Welcome! I have Thursday at 2:00 or Friday at 10:00 open \u2014 which works better?", time:'7:43 PM' },
+    { from:'me', text:"Thursday at 2 is perfect", time:'7:43 PM' },
+    { from:'ai', text:"You're booked \u2728 I've held it with a $50 deposit \u2014 here's your secure link: pay.glowmed.com/book. See you Thursday!", time:'7:43 PM' }
+  ];
+  function bubbleEl(msg){
+    var ai = msg.from === 'ai';
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex;margin-bottom:12px;justify-content:' + (ai ? 'flex-start' : 'flex-end');
+    var wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column;max-width:84%;align-items:' + (ai ? 'flex-start' : 'flex-end') + ';animation:bubbleIn .42s cubic-bezier(.2,.7,.2,1) both';
+    var b = document.createElement('div');
+    b.style.cssText = ai
+      ? 'padding:11px 14px;border-radius:18px 18px 18px 6px;background:#ECEAE1;color:#1B1E26;font-size:14px;line-height:1.5;overflow-wrap:break-word;box-shadow:0 1px 2px rgba(20,22,28,.07)'
+      : 'padding:11px 14px;border-radius:18px 18px 6px 18px;background:#2E6CF6;color:#fff;font-size:14px;line-height:1.5;overflow-wrap:break-word;box-shadow:0 6px 16px -4px rgba(46,108,246,.45)';
+    b.textContent = msg.text;
+    var t = document.createElement('div');
+    t.style.cssText = "font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.03em;margin-top:5px;color:#A39C8B;text-align:" + (ai ? 'left' : 'right');
+    t.textContent = msg.time;
+    wrap.appendChild(b); wrap.appendChild(t); row.appendChild(wrap);
+    return row;
+  }
+  function typingEl(){
+    var row = document.createElement('div');
+    row.setAttribute('data-typing','1');
+    row.style.cssText = 'display:flex;justify-content:flex-start;margin-bottom:12px';
+    var b = document.createElement('div');
+    b.style.cssText = 'display:flex;align-items:center;gap:5px;padding:13px 16px;border-radius:18px 18px 18px 6px;background:#ECEAE1';
+    for (var i=0;i<3;i++){
+      var d = document.createElement('span');
+      d.style.cssText = 'width:7px;height:7px;border-radius:50%;background:#A39C8B;animation:dotPulse 1.3s ease-in-out infinite;animation-delay:' + (i*0.18) + 's';
+      b.appendChild(d);
+    }
+    row.appendChild(b);
+    return row;
+  }
+  function scrollBottom(){ if (sms) sms.scrollTop = sms.scrollHeight; }
+
+  if (RM){
+    script.forEach(function(m){ thread.appendChild(bubbleEl(m)); });
+  } else {
+    var SPEED = 1, i = 0;
+    function step(){
+      if (i >= script.length){
+        setTimeout(function(){ thread.innerHTML = ''; i = 0; setTimeout(step, 800/SPEED); }, 5400);
+        return;
+      }
+      var msg = script[i];
+      if (msg.from === 'ai'){
+        var tp = typingEl(); thread.appendChild(tp); scrollBottom();
+        setTimeout(function(){
+          var t = thread.querySelector('[data-typing]'); if (t) t.remove();
+          thread.appendChild(bubbleEl(msg)); scrollBottom();
+          i++; setTimeout(step, 700/SPEED);
+        }, 1150/SPEED);
+      } else {
+        setTimeout(function(){
+          thread.appendChild(bubbleEl(msg)); scrollBottom();
+          i++; setTimeout(step, 750/SPEED);
+        }, 850/SPEED);
+      }
+    }
+    setTimeout(step, 850/SPEED);
+  }
+})();
+</script>
 </body>
 </html>
