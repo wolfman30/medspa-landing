@@ -734,8 +734,8 @@
   <div class="sms-header">
     <div class="avatar">✨</div>
     <div>
-      <div class="name">Adela Medical Spa</div>
-      <div class="number">+1 (234) 347-0170</div>
+      <div class="name">Demo Glow Med Spa</div>
+      <div class="number">+1 (330) 555-0198</div>
     </div>
   </div>
   <div class="progress-bar"><div class="fill" id="progress" style="width: 0%"></div></div>
@@ -846,7 +846,7 @@ const STEPS = [
     messages: [
       { type: 'system', text: '📞 Missed call from (330) 555-8472', delay: 500, sound: 'ringtone' },
       { type: 'system', text: 'AI responds in under 5 seconds', delay: 1500 },
-      { type: 'incoming', text: "Hi there! Thanks for calling Adela Medical Spa — sorry we missed you! I'm the clinic's AI assistant. How can I help you today?", delay: 2500 },
+      { type: 'incoming', text: "Hi there! Thanks for calling Demo Glow Med Spa — sorry we missed you! I'm the clinic's AI assistant. How can I help you today?", delay: 2500 },
     ]
   },
   // Step 1: Patient responds
@@ -868,7 +868,7 @@ const STEPS = [
   {
     label: "🎯 AI qualifies — New or Returning",
     messages: [
-      { type: 'incoming', text: "Thanks, Sarah! Have you visited Adela Medical Spa before, or would this be your first time?", delay: 1200 },
+      { type: 'incoming', text: "Thanks, Sarah! Have you visited Demo Glow Med Spa before, or would this be your first time?", delay: 1200 },
       { type: 'outgoing', text: "First time!", delay: 2000 },
     ]
   },
@@ -884,7 +884,7 @@ const STEPS = [
   {
     label: "🎯 AI qualifies — Provider Preference",
     messages: [
-      { type: 'incoming', text: "Do you have a preference for your provider? For the $9 Tox Offer, our eligible providers are Angela Solenthaler, Brady Steineck, Brandy Roberts, and McKenna Zehnder. Or no preference is totally fine!", delay: 1200 },
+      { type: 'incoming', text: "Do you have a preference for your provider? For the $9 Tox Offer, our eligible providers are Avery Blake, Morgan Lee, Riley Chen, and Jordan Hayes. Or no preference is totally fine!", delay: 1200 },
       { type: 'outgoing', text: "No preference", delay: 2000 },
     ]
   },
@@ -919,7 +919,7 @@ const STEPS = [
     label: "✅ Booked! Appointment confirmed automatically",
     messages: [
       { type: 'system', text: '💳 Payment received via Stripe → Auto-booking on Moxie...', delay: 800, sound: 'payment' },
-      { type: 'incoming', text: "You're all set, Sarah! 🎉\n\n📅 $9 Tox Offer — Thu, May 7 at 4:15 PM\n📍 Adela Medical Spa\n5562 Fulton Dr NW, Canton, OH\n\nWe'll send a reminder 24 hours before. See you then!", delay: 2200 },
+      { type: 'incoming', text: "You're all set, Sarah! 🎉\n\n📅 $9 Tox Offer — Thu, May 7 at 4:15 PM\n📍 Demo Glow Med Spa\nCanton, OH\n\nWe'll send a reminder 24 hours before. See you then!", delay: 2200 },
       { type: 'system', text: '✅ Lead recovered. $0 staff time. Under 3 minutes.', delay: 3500 },
     ]
   },
